@@ -1,0 +1,4 @@
+const marvelApiKey = {
+  "privateKey": "8bf8e8aeca7cef10496ff43b0c16331e0a757125",
+  "publicKey": "3bfdb3e02726a1dcd930b8e0fcf8273c"
+}
