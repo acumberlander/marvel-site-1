@@ -1,0 +1,18 @@
+.characterCard {
+  margin: 1.3em;
+  width: 300px;
+  height: 400px;
+}
+
+.characterPic {
+  width: 300px;
+  height: 400px;
+  border: solid white 5px;
+}
+
+.characterName {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #343a40;
+}
