@@ -23,23 +23,19 @@ const getCharacters = () => new Promise((resolve, reject) => {
   });
 });
 
-const getComics = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
-    .then((results) => {
-      const charactersArray = results.data.data.results;
-      charactersArray.forEach(character => {
-        // let comicsObj = character.comics;
-        // let characterId = character.id;
-        // console.log(characterId);
-        // resolve(comicsObj);
-      });
-    })
-    .catch((err => reject("Get comics call failed", err)));
-})
+// const getComics = () => new Promise((resolve, reject) => {
+//   axios.get(`${baseUrl}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
+//     .then((results) => {
+//       const charactersArray = results.data.data.results;
+//       console.log(charactersArray.length);
+//       resolve(charactersArray)
+//       })
+//       .catch((err => reject("Get comics call failed", err)));
+//     });
 
 
 export default 
 {
   getCharacters,
-  getComics
+  // getComics
 };

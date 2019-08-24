@@ -39,8 +39,8 @@ getComics = () => {
     const characterImage = imgBase + imgSize + imgType;
 
     return(
-      <div className="" onClick={this.onOpenModal}>
-        <div className="card characterCard">
+      <div className="">
+        <div className="card characterCard" onClick={this.onOpenModal}>
           <img className="characterPic" alt={character.name} src={characterImage}></img>
         <div className="card characterName">
           <h2>{character.name}</h2>
@@ -48,7 +48,7 @@ getComics = () => {
         </div>
         <Modal open={open} onClose={this.onCloseModal}>
           <div>
-            {this.getComics()}
+            {/* {this.getComics} */}
           </div>
         </Modal>
       </div>
