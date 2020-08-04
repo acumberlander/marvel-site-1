@@ -1,0 +1,268 @@
+// iphone 6/7/8 plus
+@media (width: 414px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    height: 736px;
+    width: 414px;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    height: 736px;
+    width: 414px;
+    border-radius: 0 !important;
+  }
+}
+
+// iphone 6/7/8/X
+@media (width: 375px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    height: 812px;
+    width: 375px;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    height: 812px;
+    width: 375px;
+    border-radius: 0 !important;
+  }
+}
+
+// small tablets/large phones
+@media (min-width: 500px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    height: 100%;
+    border-radius: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    max-width: 400px;
+    max-height: 500px;
+    left: 33% !important;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    height: 100%;
+    border-radius: 1rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    left: 37% !important;
+    max-width: 400px;
+    max-height: 500px;
+  }
+}
+
+// iPads (portrait & landscape)
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    max-width: 400px;
+    max-height: 525px;
+    left: 32% !important;
+  }
+
+  .modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 15px;
+    height: 100%;
+    border-radius: 1rem !important;
+  }
+
+  .login-modal-body {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 1rem;
+    width: 450px !important;
+    height: 400px !important;
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .the-modal {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    left: 40% !important;
+    max-width: 400px;
+    max-height: 500px;
+  }
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 15px;
+}
+
+.login-modal-body {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 1rem;
+  width: 400px;
+  height: 350px;
+  padding: 15px;
+}
+
+#modal-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-family: cursive;
+  color: red;
+  font-size: 40px;
+}
+
+#modal-description {
+  margin-bottom: 50px;
+}
+
+.content-container {
+  text-align: center;
+}
+
+.body-content {
+  display: flex;
+  justify-content: center;
+}
+
+#facebook-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+#google-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 10px;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  #facebook-button {
+    margin-bottom: 10px;
+    height: 35px;
+    border-radius: 3rem;
+    background: #3b5998;
+  }
+  #google-button {
+    margin-bottom: 10px;
+    height: 35px;
+    width: 300px;
+    border-radius: 3rem;
+    background: #4285f4;
+  }
+}
+.button-content {
+  display: flex;
+  p {
+    margin: 0;
+    color: white;
+  }
+}
+
+.action-links {
+  display: flex;
+  justify-content: center;
+}
+
+.log-options {
+  cursor: pointer;
+  color: red;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.close-icon-div {
+  display: flex;
+  justify-content: flex-end;
+  #close-icon {
+    cursor: pointer;
+  }
+}
+
+.login-header {
+  display: flex;
+  justify-content: flex-start;
+  width: 400px;
+  .back-arrow {
+    cursor: pointer;
+  }
+  h3 {
+    margin: 3px 0 0 20px;
+  }
+}
+
+.filled-basic {
+  width: 100%;
+}
+
+#input-container {
+  width: 350px;
+  padding-top: 50px;
+}
+
+#login-button {
+  margin-top: 30px;
+  background: red;
+  color: white;
+  border-radius: 2rem;
+  font-weight: bold;
+  width: 100px;
+}
+
+.email-input-div {
+  margin-bottom: 10px;
+}
+
+.password-input-div {
+  margin-bottom: 10px;
+}
+
+.eye-icon {
+  cursor: pointer;
+}

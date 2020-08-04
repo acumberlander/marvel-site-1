@@ -1,27 +1,31 @@
-import axios from 'axios';
-import apiKeys from '../apiKeys';
+import axios from "axios";
+import marvelApiKey from "../apiKeys";
 
-const md5 = require('js-md5');
+const md5 = require("js-md5");
 
-const baseUrl = apiKeys.baseUrl;
-const publicKey = apiKeys.publicKey;
-const privateKey = apiKeys.privateKey;
+const baseUrl = marvelApiKey.marvelApiKey.baseUrl;
+const publicKey = marvelApiKey.marvelApiKey.publicKey;
+const privateKey = marvelApiKey.marvelApiKey.privateKey;
 
 const ts = Date.now();
 
-let hash = md5(ts+privateKey+publicKey);
+let hash = md5(ts + privateKey + publicKey);
 
-const getCharacters = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
-    .then((results) => {
-      const charactersArray = results.data.data.results
-      resolve(charactersArray);
-      // console.log(charactersArray);
-    })
-    .catch((error) => {
-      reject(error);
+const getCharacters = () =>
+  new Promise((resolve, reject) => {
+    axios
+      .get(
+        `${baseUrl}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`
+      )
+      .then((results) => {
+        const charactersArray = results.data.data.results;
+        resolve(charactersArray);
+        // console.log(charactersArray);
+      })
+      .catch((error) => {
+        reject(error);
+      });
   });
-});
 
 // const getComics = () => new Promise((resolve, reject) => {
 //   axios.get(`${baseUrl}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
@@ -33,9 +37,7 @@ const getCharacters = () => new Promise((resolve, reject) => {
 //       .catch((err => reject("Get comics call failed", err)));
 //     });
 
-
-export default 
-{
+export default {
   getCharacters,
   // getComics
 };

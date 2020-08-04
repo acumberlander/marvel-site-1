@@ -1,15 +1,117 @@
-import React, { Component } from 'react';
-import Characters from '../Characters/Characters';
-import MyNavbar from '../MyNavbar/MyNavbar';
-import './App.scss';
+import React, { Component } from "react";
+import * as firebase from "firebase/app";
+// import Characters from "../Components/Characters/Characters";
+import MyNavbar from "../Components/MyNavbar/MyNavbar";
+import "./App.scss";
+import { BrowserRouter } from "react-router-dom";
+import userRequests from "../Data/Requests/userRequests";
+import authRequests from "../Data/Requests/authRequests";
+import connection from "../Data/connection";
 
 class App extends Component {
+  state = {
+    authed: false,
+    currentUid: "",
+    pendingUser: true,
+    userObject: {},
+  };
+
+  componentDidMount() {
+    connection();
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        userRequests.getAllUsers().then((allUsers) => {
+          const filteredUsers = allUsers.filter(
+            (userObj) => userObj.uid === user.uid
+          ).length;
+          if (filteredUsers === 0) {
+            console.log(filteredUsers);
+            const userInfo = {
+              fullName: user.displayName,
+              email: user.email,
+              uid: user.uid,
+            };
+            userRequests.createUser(userInfo);
+          }
+        });
+        const currentUid = user.uid;
+        userRequests.getUserByUid(currentUid).then((user) => {
+          this.setState({
+            userObject: user,
+            authed: true,
+            currentUid: currentUid,
+            pendingUser: false,
+          });
+        });
+      } else {
+        this.setState({
+          authed: false,
+          currentUid: "",
+          pendingUser: false,
+        });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this.removeListener();
+  }
 
   render() {
+    const { authed, userObject } = this.state;
+
+    const logoutClickEvent = () => {
+      authRequests.logoutUser();
+      this.setState({ authed: false });
+    };
     return (
       <div className="App">
-        <MyNavbar />
-        <Characters />
+        <BrowserRouter>
+          <React.Fragment>
+            <MyNavbar
+              userObject={userObject}
+              isAuthed={authed}
+              logoutClickEvent={logoutClickEvent}
+            />
+            <div className="container">
+              <div className="d-flex justify-content-center">
+                {/* <Switch>
+                  <Route
+                    path="/"
+                    exact
+                    component={HomePage}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/home"
+                    component={HomePage}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/profile"
+                    component={ProfilePage}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/profile-settings"
+                    component={ProfileSettings}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/chat"
+                    component={Chat}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/notifications"
+                    component={NotificationPage}
+                    authed={this.state.authed}
+                  />
+                </Switch> */}
+              </div>
+            </div>
+          </React.Fragment>
+        </BrowserRouter>
       </div>
     );
   }
