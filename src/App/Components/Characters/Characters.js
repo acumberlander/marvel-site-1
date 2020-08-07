@@ -1,5 +1,5 @@
 import React from "react";
-import marvelRequests from "../../Data/Requests/marvelRequests";
+import marvelRequests from "../../Helpers/Data/Requests/marvelRequests";
 import SingleCharacter from "../SingleCharacter/SingleCharacter";
 import "./Characters.scss";
 // import { reject } from 'q';

@@ -16,8 +16,8 @@ import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import PersonIcon from "@material-ui/icons/Person";
 import "firebase/auth";
 import firebase from "firebase/app";
-import userRequests from "../../Data/Requests/userRequests";
-import authRequests from "../../Data/Requests/authRequests";
+import userRequests from "../../Helpers/Data/Requests/userRequests";
+import authRequests from "../../Helpers/Data/Requests/authRequests";
 
 const userInfo = {
   email: "",

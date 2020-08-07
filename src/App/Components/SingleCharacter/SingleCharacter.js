@@ -2,7 +2,7 @@ import React from "react";
 import characterShape from "../../characterShape";
 import "./SingleCharacter.scss";
 import Modal from "react-responsive-modal";
-import marvelRequests from "../../Data/Requests/marvelRequests";
+import marvelRequests from "../../Helpers/Data/Requests/marvelRequests";
 
 class SingleCharacter extends React.Component {
   static propTypes = {

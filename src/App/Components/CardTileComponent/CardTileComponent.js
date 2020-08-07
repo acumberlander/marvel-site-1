@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import "./CardTileComponent.scss";
+import contentShape from "../../Helpers/PropShapes/contentShape";
 
 export class CardTileComponent extends Component {
+  static propTypes = {
+    contentItem: contentShape,
+  };
+
   render() {
     return (
       <>

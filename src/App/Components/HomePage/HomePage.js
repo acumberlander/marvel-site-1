@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./HomePage.scss";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
-import data from "../../Data/comicData.json";
+import data from "../../Helpers/Data/comicData.json";
 
 export class HomePage extends Component {
   constructor() {
@@ -19,7 +19,48 @@ export class HomePage extends Component {
   }
 
   render() {
-    const { popular, movies, comics, series } = this.state;
+    const { popular, comics, movies, series } = this.state;
+    // Row logic
+    const popularRow = popular.map((item) => {
+      return (
+        <CardTileComponent
+          contentItem={item}
+          key={item.id}
+          image={item.image_src}
+          name={item.name}
+        />
+      );
+    });
+    const comicsRow = comics.map((item) => {
+      return (
+        <CardTileComponent
+          contentItem={item}
+          key={item.id}
+          image={item.image_src}
+          name={item.name}
+        />
+      );
+    });
+    const moviesRow = movies.map((item) => {
+      return (
+        <CardTileComponent
+          contentItem={item}
+          key={item.id}
+          image={item.image_src}
+          name={item.name}
+        />
+      );
+    });
+    const seriesRow = series.map((item) => {
+      return (
+        <CardTileComponent
+          contentItem={item}
+          key={item.id}
+          image={item.image_src}
+          name={item.name}
+        />
+      );
+    });
     return (
       <div>
         <div className="homepage-container">
@@ -85,37 +126,13 @@ export class HomePage extends Component {
           </div>
           <div className="row-container">
             <h2 className="header">Popular</h2>
-            <section className="slider-row">
-              {popular.map((item) => {
-                return (
-                  <CardTileComponent image={item.image_src} name={item.name} />
-                );
-              })}
-            </section>
+            <section className="slider-row">{popularRow}</section>
             <h2 className="header">Comics</h2>
-            <section className="slider-row">
-              {comics.map((item) => {
-                return (
-                  <CardTileComponent image={item.image_src} name={item.name} />
-                );
-              })}
-            </section>
+            <section className="slider-row">{comicsRow}</section>
             <h2 className="header">Movies</h2>
-            <section className="slider-row">
-              {movies.map((item) => {
-                return (
-                  <CardTileComponent image={item.image_src} name={item.name} />
-                );
-              })}
-            </section>
+            <section className="slider-row">{moviesRow}</section>
             <h2 className="header">Series</h2>
-            <section className="slider-row">
-              {series.map((item) => {
-                return (
-                  <CardTileComponent image={item.image_src} name={item.name} />
-                );
-              })}
-            </section>
+            <section className="slider-row">{seriesRow}</section>
           </div>
         </div>
       </div>
