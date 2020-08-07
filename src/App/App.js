@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import * as firebase from "firebase/app";
 // import Characters from "../Components/Characters/Characters";
-import MyNavbar from "../Components/MyNavbar/MyNavbar";
-import HomePage from "../Components/HomePage/HomePage";
-import DetailsPage from "../Components/DetailsPage/DetailsPage";
+import MyNavbar from "./Components/MyNavbar/MyNavbar";
+import HomePage from "./Components/HomePage/HomePage";
+import DetailsPage from "./Components/DetailsPage/DetailsPage";
 import "./App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import userRequests from "../Data/Requests/userRequests";
-import authRequests from "../Data/Requests/authRequests";
-import connection from "../Data/connection";
+import userRequests from "./Helpers/Data/Requests/userRequests";
+import authRequests from "./Helpers/Data/Requests/authRequests";
+import connection from "./Helpers/Data/connection";
 
 class App extends Component {
   state = {
@@ -90,7 +90,8 @@ class App extends Component {
                     authed={this.state.authed}
                   />
                   <Route
-                    path="/details"
+                    exact
+                    path="/details/:id"
                     component={DetailsPage}
                     authed={this.state.authed}
                   />
