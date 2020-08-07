@@ -1,7 +1,0 @@
-const marvelApiKey = {
-  "privateKey": "00000000000000000",
-  "publicKey": "1111111111111111111",
-  "baseUrl": "https://gateway.marvel.com"
-};
-
-export default marvelApiKey; 

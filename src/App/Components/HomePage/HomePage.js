@@ -24,6 +24,7 @@ export class HomePage extends Component {
     const popularRow = popular.map((item) => {
       return (
         <CardTileComponent
+          contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
@@ -33,6 +34,7 @@ export class HomePage extends Component {
     const comicsRow = comics.map((item) => {
       return (
         <CardTileComponent
+          contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
@@ -42,6 +44,7 @@ export class HomePage extends Component {
     const moviesRow = movies.map((item) => {
       return (
         <CardTileComponent
+          contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
@@ -51,6 +54,7 @@ export class HomePage extends Component {
     const seriesRow = series.map((item) => {
       return (
         <CardTileComponent
+          contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
