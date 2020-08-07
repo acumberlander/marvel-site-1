@@ -1,11 +1,11 @@
 import axios from "axios";
-import marvelApiKey from "../apiKeys";
+import apiKeys from "../apiKeys";
 
 const md5 = require("js-md5");
 
-const baseUrl = marvelApiKey.marvelApiKey.baseUrl;
-const publicKey = marvelApiKey.marvelApiKey.publicKey;
-const privateKey = marvelApiKey.marvelApiKey.privateKey;
+const baseUrl = apiKeys.marvelApiKey.baseUrl;
+const publicKey = apiKeys.marvelApiKey.publicKey;
+const privateKey = apiKeys.marvelApiKey.privateKey;
 
 const ts = Date.now();
 

@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import * as firebase from "firebase/app";
 // import Characters from "../Components/Characters/Characters";
 import MyNavbar from "../Components/MyNavbar/MyNavbar";
+import HomePage from "../Components/HomePage/HomePage";
+import DetailsPage from "../Components/DetailsPage/DetailsPage";
 import "./App.scss";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import userRequests from "../Data/Requests/userRequests";
 import authRequests from "../Data/Requests/authRequests";
 import connection from "../Data/connection";
@@ -75,7 +77,7 @@ class App extends Component {
             />
             <div className="container">
               <div className="d-flex justify-content-center">
-                {/* <Switch>
+                <Switch>
                   <Route
                     path="/"
                     exact
@@ -88,6 +90,11 @@ class App extends Component {
                     authed={this.state.authed}
                   />
                   <Route
+                    path="/details"
+                    component={DetailsPage}
+                    authed={this.state.authed}
+                  />
+                  {/* <Route
                     path="/profile"
                     component={ProfilePage}
                     authed={this.state.authed}
@@ -106,8 +113,8 @@ class App extends Component {
                     path="/notifications"
                     component={NotificationPage}
                     authed={this.state.authed}
-                  />
-                </Switch> */}
+                  />*/}
+                </Switch>
               </div>
             </div>
           </React.Fragment>
