@@ -3,6 +3,7 @@ import * as firebase from "firebase/app";
 // import Characters from "../Components/Characters/Characters";
 import MyNavbar from "../Components/MyNavbar/MyNavbar";
 import HomePage from "../Components/HomePage/HomePage";
+import DetailsPage from "../Components/DetailsPage/DetailsPage";
 import "./App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import userRequests from "../Data/Requests/userRequests";
@@ -86,6 +87,11 @@ class App extends Component {
                   <Route
                     path="/home"
                     component={HomePage}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/details"
+                    component={DetailsPage}
                     authed={this.state.authed}
                   />
                   {/* <Route

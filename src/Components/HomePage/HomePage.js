@@ -1,38 +1,25 @@
 import React, { Component } from "react";
 import "./HomePage.scss";
-import comicVine from "../../Data/Requests/comicVineRequests";
 import { Carousel } from "react-bootstrap";
-import AliceCarousel from "react-alice-carousel";
+import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
+import data from "../../Data/comicData.json";
 
 export class HomePage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      popular: data.Popular,
+      movies: data.Movies,
+      comics: data.Comics,
+      series: data.Series,
+    };
+  }
   componentDidMount() {
     // comicVine.getCharacters();
   }
 
   render() {
-    // const Gallery = () => {
-    //   const handleOnDragStart = (e) => e.preventDefault();
-    //   return (
-    //     <AliceCarousel mouseTrackingEnabled>
-    //       <img
-    //         src="https://images2.alphacoders.com/830/thumb-1920-830602.jpg"
-    //         onDragStart={handleOnDragStart}
-    //         className="yours-custom-class"
-    //       />
-    //       <img
-    //         src="https://images4.alphacoders.com/953/thumb-1920-953244.jpg"
-    //         onDragStart={handleOnDragStart}
-    //         className="yours-custom-class"
-    //       />
-    //       <img
-    //         src="https://images.alphacoders.com/803/thumb-1920-803177.png"
-    //         onDragStart={handleOnDragStart}
-    //         className="yours-custom-class"
-    //       />
-    //     </AliceCarousel>
-    //   );
-    // };
-
+    const { popular, movies, comics, series } = this.state;
     return (
       <div>
         <div className="homepage-container">
@@ -99,39 +86,35 @@ export class HomePage extends Component {
           <div className="row-container">
             <h2 className="header">Popular</h2>
             <section className="slider-row">
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
+              {popular.map((item) => {
+                return (
+                  <CardTileComponent image={item.image_src} name={item.name} />
+                );
+              })}
             </section>
             <h2 className="header">Comics</h2>
             <section className="slider-row">
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
+              {comics.map((item) => {
+                return (
+                  <CardTileComponent image={item.image_src} name={item.name} />
+                );
+              })}
             </section>
             <h2 className="header">Movies</h2>
             <section className="slider-row">
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
+              {movies.map((item) => {
+                return (
+                  <CardTileComponent image={item.image_src} name={item.name} />
+                );
+              })}
             </section>
             <h2 className="header">Series</h2>
             <section className="slider-row">
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
-              <div className="card-tile">Test</div>
+              {series.map((item) => {
+                return (
+                  <CardTileComponent image={item.image_src} name={item.name} />
+                );
+              })}
             </section>
           </div>
         </div>
