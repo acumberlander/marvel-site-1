@@ -1,7 +1,33 @@
 import axios from "axios";
 import apiKeys from "../apiKeys";
+import userRequests from "./userRequests";
+import authRequests from "./authRequests";
 
 const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
+
+const getCollection = () =>
+  new Promise((resolve, reject) =>
+    axios
+      .get(`${firebaseUrl}/collection.json`)
+      .then((result) => {
+        let collectionObj = result.data;
+        console.log(collectionObj);
+        resolve(collectionObj);
+      })
+      .catch((err) => reject(err))
+  );
+
+const getContentById = (id) =>
+  getCollection().then((res) => {
+    let comics = res.Comics;
+    let movies = res.Movies;
+    let popular = res.Popular;
+    let series = res.Series;
+    let contentArray = [...popular, ...movies, ...comics, ...series];
+    let contentItem = contentArray.filter((item) => item.id === id)[0];
+    console.log(contentItem);
+    return contentItem;
+  });
 
 const getAllCollectionItemsByUid = (uid) =>
   new Promise((resolve, reject) => {
@@ -38,15 +64,32 @@ const getAllCollectionItemsByUid = (uid) =>
       });
   });
 
-const addCollectionItem = (newItem) =>
-  new Promise((resolve, reject) => {
-    axios
-      .post(`${firebaseUrl}/collection.json`, newItem)
-      .then((res) => {
-        resolve(res);
-      })
-      .catch((err) => reject(err));
+const addCollectionItem = (uid, newItem) =>
+  userRequests.getUserByUid(uid).then((res) => {
+    let userObject = res;
+    let userKey = res["id"];
+
+    if (!userObject.collection) {
+      userObject.collection = [newItem];
+      userRequests.updateUserCollection(userObject, userKey);
+    } else {
+      let filteredArr = userObject.collection.filter(
+        (item) => item.id === newItem.id
+      );
+
+      if (filteredArr.length === 0) userObject.collection.push(newItem);
+      userRequests.updateUserCollection(userObject, userKey);
+    }
   });
+
+// new Promise((resolve, reject) => {
+//   axios
+//     .post(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`, newItem)
+//     .then((res) => {
+//       resolve(res);
+//     })
+//     .catch((err) => reject(err));
+// });
 
 const deleteFromCollection = (itemId) =>
   axios.delete(`${firebaseUrl}/collection/${itemId}.json`);
@@ -55,4 +98,6 @@ export default {
   getAllCollectionItemsByUid,
   addCollectionItem,
   deleteFromCollection,
+  getCollection,
+  getContentById,
 };

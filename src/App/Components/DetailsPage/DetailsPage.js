@@ -2,58 +2,43 @@ import React, { Component } from "react";
 import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
-import data from "../../Helpers/Data/comicData.json";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
 
 export class DetailsPage extends Component {
   state = {
     contentItem: contentShape,
-    popular: data.Popular,
-    movies: data.Movies,
-    comics: data.Comics,
-    series: data.Series,
+    popular: [],
+    movies: [],
+    comics: [],
+    series: [],
     collection: [],
   };
 
   defaultItem = {};
 
   componentDidMount() {
-    const { popular, movies, comics, series } = this.state;
-    const contentId = this.props.match.params.id;
-    // const uid = authRequests.getCurrentUid();
-    // collectionRequest.getAllCollectionItemsByUid(uid).then((collection) => {
-    //   collection.filter(item => item.id === contentId);
-
-    //   this.setState({ collection });
-    // });
-    const getContentById = (id) => {
-      id = contentId;
-      let contentArray = [...popular, ...movies, ...comics, ...series];
-      let contentItem = contentArray.filter((item) => item.id === id)[0];
+    data.getCollection().then((res) => {
       this.setState({
-        contentItem: contentItem,
+        popular: res.Popular,
+        movies: res.Movies,
+        comics: res.Comics,
+        series: res.Series,
       });
-    };
-
-    getContentById();
+    });
+    const contentId = this.props.match.params.id;
+    data.getContentById(contentId).then((res) => {
+      this.setState({ contentItem: res });
+    });
   }
 
   addToCollection = () => {
     const { contentItem } = this.state;
     const uid = authRequests.getCurrentUid();
-    contentItem.uid = uid;
-    let itemObject = { ...contentItem };
+    let itemObject = contentItem;
 
-    collectionRequest
-      .addCollectionItem(itemObject)
-      .then(() => {
-        collectionRequest.getAllCollectionItemsByUid(uid).then((collection) => {
-          console.log(collection);
-          this.setState({ collection, contentItem });
-        });
-      })
-      .catch((err) => console.error("error with collectionItem post", err));
+    collectionRequest.addCollectionItem(uid, itemObject);
   };
 
   removeFromCollection = () => {
@@ -154,28 +139,7 @@ export class DetailsPage extends Component {
               <h2>Details</h2>
             </div>
             <div className="details-column-container">
-              {/* <p>{contentItem.description}</p> */}
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
-                delectus voluptatum. Quasi, reprehenderit. Magni, voluptas.
-                Optio veniam tempore nemo ad exercitationem eaque velit quo.
-                Aliquid, possimus maxime? Culpa recusandae repudiandae
-                voluptatum aperiam, amet sunt, earum tempora dolor similique
-                voluptates, saepe expedita nihil blanditiis officiis quisquam
-                incidunt suscipit dolorum nostrum. Doloremque corrupti
-                necessitatibus placeat, optio fuga, dolore iste adipisci natus
-                aliquam vitae in ea eius delectus, esse animi unde rerum
-                molestias maiores rem odio eaque sapiente eum! Quae, laboriosam,
-                ad quidem corporis eligendi et dolores at numquam aut laudantium
-                fuga cum! Quod laborum ea unde distinctio atque sit explicabo
-                totam error ut blanditiis quos possimus quasi ab, aliquid
-                dolorum placeat perferendis, necessitatibus, voluptate libero
-                quia aspernatur. Ad sed quasi exercitationem earum, quo rerum
-                cumque saepe ex adipisci mollitia aperiam voluptatibus eligendi
-                perferendis debitis quisquam facilis rem quas repudiandae unde
-                natus. Dolore architecto sequi aliquid provident dignissimos
-                dolores temporibus repellendus voluptate enim!
-              </p>
+              <p>{contentItem.description}</p>
             </div>
           </div>
         </div>
