@@ -5,7 +5,6 @@ import contentShape from "./../../Helpers/PropShapes/contentShape";
 import data from "../../Helpers/Data/comicData.json";
 import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
-import userRequests from "../../Helpers/Data/Requests/userRequests";
 
 export class DetailsPage extends Component {
   state = {
@@ -22,6 +21,12 @@ export class DetailsPage extends Component {
   componentDidMount() {
     const { popular, movies, comics, series } = this.state;
     const contentId = this.props.match.params.id;
+    // const uid = authRequests.getCurrentUid();
+    // collectionRequest.getAllCollectionItemsByUid(uid).then((collection) => {
+    //   collection.filter(item => item.id === contentId);
+
+    //   this.setState({ collection });
+    // });
     const getContentById = (id) => {
       id = contentId;
       let contentArray = [...popular, ...movies, ...comics, ...series];
@@ -34,34 +39,27 @@ export class DetailsPage extends Component {
     getContentById();
   }
 
-  refreshState = () => {
-    this.setState({
-      contentItem: this.state.contentItem,
-    });
-  };
-
   addToCollection = () => {
-    debugger;
-    userRequests.getAllUsers();
     const { contentItem } = this.state;
     const uid = authRequests.getCurrentUid();
     contentItem.uid = uid;
     let itemObject = { ...contentItem };
 
-    /*Having trouble with axiox calls. It doesn't think the requests are returning anything.*/
-    collectionRequest.addCollectionItem(itemObject);
     collectionRequest
-      .getAllCollectionItemsByUid()
-      .then((collection) => {
-        console.log(collection);
-        this.setState({ collection });
+      .addCollectionItem(itemObject)
+      .then(() => {
+        collectionRequest.getAllCollectionItemsByUid(uid).then((collection) => {
+          console.log(collection);
+          this.setState({ collection, contentItem });
+        });
       })
       .catch((err) => console.error("error with collectionItem post", err));
   };
 
   removeFromCollection = () => {
     const { contentItem } = this.state;
-    collectionRequest.deleteFromCollection(contentItem.uid);
+
+    collectionRequest.deleteFromCollection(contentItem.collectionId);
   };
 
   render() {
@@ -148,9 +146,9 @@ export class DetailsPage extends Component {
               width="65vw"
               height="60vh"
               src={contentItem.yt_link}
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
             <div className="details-header-div">
               <h2>Details</h2>
