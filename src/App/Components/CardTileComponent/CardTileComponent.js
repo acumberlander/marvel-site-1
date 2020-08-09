@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./CardTileComponent.scss";
 import { Link } from "react-router-dom";
 import contentShape from "../../Helpers/PropShapes/contentShape";
+import { PropTypes } from "prop-types";
 
 export class CardTileComponent extends Component {
   static propTypes = {

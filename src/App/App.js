@@ -4,6 +4,7 @@ import * as firebase from "firebase/app";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
 import HomePage from "./Components/HomePage/HomePage";
 import DetailsPage from "./Components/DetailsPage/DetailsPage";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import "./App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import userRequests from "./Helpers/Data/Requests/userRequests";
@@ -96,11 +97,12 @@ class App extends Component {
                     component={DetailsPage}
                     authed={this.state.authed}
                   />
-                  {/* <Route
-                    path="/profile"
+                  <Route
+                    path={`/profile/:${userObject.id}`}
                     component={ProfilePage}
                     authed={this.state.authed}
                   />
+                  {/*
                   <Route
                     path="/profile-settings"
                     component={ProfileSettings}

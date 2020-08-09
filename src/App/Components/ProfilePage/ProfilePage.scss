@@ -1,0 +1,17 @@
+.profile-page-container {
+  margin-top: 50px;
+  .profile-image-and-name {
+    display: flex;
+    justify-content: center;
+    width: 95vw;
+    height: 25vh;
+    margin-bottom: 30px;
+    border: 1px solid black;
+  }
+
+  .profile-pic {
+    height: 15vh;
+    width: 15vh;
+    border-radius: 55rem;
+  }
+}
