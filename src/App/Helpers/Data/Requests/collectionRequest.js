@@ -82,17 +82,15 @@ const addCollectionItem = (uid, newItem) =>
     }
   });
 
-// new Promise((resolve, reject) => {
-//   axios
-//     .post(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`, newItem)
-//     .then((res) => {
-//       resolve(res);
-//     })
-//     .catch((err) => reject(err));
-// });
+const deleteFromCollection = (uid, item) =>
+  userRequests.getUserByUid(uid).then((res) => {
+    let userKey = res["id"];
+    let userObject = res;
 
-const deleteFromCollection = (itemId) =>
-  axios.delete(`${firebaseUrl}/collection/${itemId}.json`);
+    let updatedArr = userObject.collection.filter((x) => x.id !== item.id);
+    userObject.collection = updatedArr;
+    userRequests.updateUserCollection(userObject, userKey);
+  });
 
 export default {
   getAllCollectionItemsByUid,

@@ -43,8 +43,10 @@ export class DetailsPage extends Component {
 
   removeFromCollection = () => {
     const { contentItem } = this.state;
+    const uid = authRequests.getCurrentUid();
+    let itemObject = contentItem;
 
-    collectionRequest.deleteFromCollection(contentItem.collectionId);
+    collectionRequest.deleteFromCollection(uid, itemObject);
   };
 
   render() {
