@@ -1,5 +1,6 @@
 import axios from "axios";
 import apiKeys from "../apiKeys";
+import firebase from "firebase";
 
 const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
 
@@ -7,6 +8,13 @@ const createUser = (user) => axios.post(`${firebaseUrl}/users.json`, user);
 
 const updateUserCollection = (user, userKey) =>
   axios.put(`${firebaseUrl}/users/${userKey}.json`, user);
+
+const addUserCollectionItem = (userKey, newItem) => {
+  let userRef = firebase.database().ref("users/" + userKey);
+  userRef.child("collection").update({
+    newItem,
+  });
+};
 
 const getUserByUid = (uid) =>
   new Promise((resolve, reject) => {
@@ -54,4 +62,5 @@ export default {
   getUserByUid,
   createUser,
   updateUserCollection,
+  addUserCollectionItem,
 };
