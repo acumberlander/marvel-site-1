@@ -84,13 +84,9 @@ const addCollectionItem = (uid, newItem) =>
 
 const deleteFromCollection = (uid, item) =>
   userRequests.getUserByUid(uid).then((res) => {
-    // debugger;
     let userKey = res["id"];
     let userObject = res;
-    let itemId = item.id;
-    console.log(itemId);
 
-    // userRequests.deleteUserCollectionItem(userKey, itemId);
     let updatedArr = userObject.collection.filter((x) => x.id !== item.id);
     userObject.collection = updatedArr;
     userRequests.updateUserCollection(userObject, userKey);
