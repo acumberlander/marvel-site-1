@@ -5,15 +5,13 @@ import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import data from "../../Helpers/Data/comicData.json";
 
 export class HomePage extends Component {
-  constructor() {
-    super();
-    this.state = {
-      popular: data.Popular,
-      movies: data.Movies,
-      comics: data.Comics,
-      series: data.Series,
-    };
-  }
+  state = {
+    popular: data.Popular,
+    movies: data.Movies,
+    comics: data.Comics,
+    series: data.Series,
+  };
+
   componentDidMount() {
     // comicVine.getCharacters();
   }

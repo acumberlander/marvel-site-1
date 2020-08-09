@@ -75,7 +75,7 @@ class App extends Component {
               isAuthed={authed}
               logoutClickEvent={logoutClickEvent}
             />
-            <div className="container">
+            <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
                   <Route

@@ -31,6 +31,7 @@ const getAllUsers = () =>
     axios
       .get(`${firebaseUrl}/users.json`)
       .then((result) => {
+        console.log(result);
         const userObject = result.data;
         const userArray = [];
         if (userObject != null) {
