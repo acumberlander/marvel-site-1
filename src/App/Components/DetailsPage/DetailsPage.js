@@ -2,66 +2,49 @@ import React, { Component } from "react";
 import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
-import data from "../../Helpers/Data/comicData.json";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
-import userRequests from "../../Helpers/Data/Requests/userRequests";
 
 export class DetailsPage extends Component {
   state = {
     contentItem: contentShape,
-    popular: data.Popular,
-    movies: data.Movies,
-    comics: data.Comics,
-    series: data.Series,
+    popular: [],
+    movies: [],
+    comics: [],
+    series: [],
     collection: [],
   };
 
   defaultItem = {};
 
   componentDidMount() {
-    const { popular, movies, comics, series } = this.state;
-    const contentId = this.props.match.params.id;
-    const getContentById = (id) => {
-      id = contentId;
-      let contentArray = [...popular, ...movies, ...comics, ...series];
-      let contentItem = contentArray.filter((item) => item.id === id)[0];
+    data.getCollection().then((res) => {
       this.setState({
-        contentItem: contentItem,
+        popular: res.Popular,
+        movies: res.Movies,
+        comics: res.Comics,
+        series: res.Series,
       });
-    };
-
-    getContentById();
+    });
+    const contentId = this.props.match.params.id;
+    data.getContentById(contentId).then((res) => {
+      this.setState({ contentItem: res });
+    });
   }
 
-  refreshState = () => {
-    this.setState({
-      contentItem: this.state.contentItem,
-    });
-  };
-
   addToCollection = () => {
-    debugger;
-    userRequests.getAllUsers();
     const { contentItem } = this.state;
     const uid = authRequests.getCurrentUid();
-    contentItem.uid = uid;
-    let itemObject = { ...contentItem };
+    let itemObject = contentItem;
 
-    /*Having trouble with axiox calls. It doesn't think the requests are returning anything.*/
-    collectionRequest.addCollectionItem(itemObject);
-    collectionRequest
-      .getAllCollectionItemsByUid()
-      .then((collection) => {
-        console.log(collection);
-        this.setState({ collection });
-      })
-      .catch((err) => console.error("error with collectionItem post", err));
+    collectionRequest.addCollectionItem(uid, itemObject);
   };
 
   removeFromCollection = () => {
     const { contentItem } = this.state;
-    collectionRequest.deleteFromCollection(contentItem.uid);
+
+    collectionRequest.deleteFromCollection(contentItem.collectionId);
   };
 
   render() {
@@ -148,36 +131,15 @@ export class DetailsPage extends Component {
               width="65vw"
               height="60vh"
               src={contentItem.yt_link}
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
             <div className="details-header-div">
               <h2>Details</h2>
             </div>
             <div className="details-column-container">
-              {/* <p>{contentItem.description}</p> */}
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero,
-                delectus voluptatum. Quasi, reprehenderit. Magni, voluptas.
-                Optio veniam tempore nemo ad exercitationem eaque velit quo.
-                Aliquid, possimus maxime? Culpa recusandae repudiandae
-                voluptatum aperiam, amet sunt, earum tempora dolor similique
-                voluptates, saepe expedita nihil blanditiis officiis quisquam
-                incidunt suscipit dolorum nostrum. Doloremque corrupti
-                necessitatibus placeat, optio fuga, dolore iste adipisci natus
-                aliquam vitae in ea eius delectus, esse animi unde rerum
-                molestias maiores rem odio eaque sapiente eum! Quae, laboriosam,
-                ad quidem corporis eligendi et dolores at numquam aut laudantium
-                fuga cum! Quod laborum ea unde distinctio atque sit explicabo
-                totam error ut blanditiis quos possimus quasi ab, aliquid
-                dolorum placeat perferendis, necessitatibus, voluptate libero
-                quia aspernatur. Ad sed quasi exercitationem earum, quo rerum
-                cumque saepe ex adipisci mollitia aperiam voluptatibus eligendi
-                perferendis debitis quisquam facilis rem quas repudiandae unde
-                natus. Dolore architecto sequi aliquid provident dignissimos
-                dolores temporibus repellendus voluptate enim!
-              </p>
+              <p>{contentItem.description}</p>
             </div>
           </div>
         </div>

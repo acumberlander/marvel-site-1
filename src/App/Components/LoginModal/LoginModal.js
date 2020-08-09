@@ -106,6 +106,7 @@ export default class LoginModal extends Component {
           fullName: newUserInfo.fullName,
           email: newUserInfo.email,
           uid: newUserInfo.uid,
+          collection: newUserInfo.collection,
         };
         userRequests.createUser(usrInfo);
         this.props.hideModal();

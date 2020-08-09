@@ -1,250 +1,252 @@
 {
-  "Popular": [
-    {
-      "id": "1",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://i.annihil.us/u/prod/marvel/i/mg/6/c0/5915d778aff00/clean.jpg",
-      "yt_link": "https://www.youtube.com/embed/qnb_NxbVP_w",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "2",
-      "name": "Batman: The Killing Joke",
-      "description": "Batman: The Killing Joke is a 1988 DC Comics one-shot graphic novel featuring the characters Batman and the Joker written by Alan Moore and illustrated by Brian Bolland. The Killing Joke provides an origin story for the supervillain the Joker, loosely adapted from the 1951 story arc The Man Behind the Red Hood!.",
-      "image_src": "https://files1.comics.org//img/gcd/covers_by_id/958/w400/958434.jpg?-7705908354582860082",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "DC",
-      "date": "March 1988",
-      "type": "comic_book"
-    },
-    {
-      "id": "3",
-      "name": "The Uncanny X-Men: The Dark Phoenix Saga #136",
-      "description": "Continuation of The Dark Phoneix Saga.",
-      "image_src": "https://i.pinimg.com/originals/30/a5/09/30a509b9cf2178581fd1636cb89700d0.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "series"
-    },
-    {
-      "id": "4",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "5",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "6",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    }
-  ],
-  "Comics": [
-    {
-      "id": "7",
-      "name": "The Surfer and the Spider!",
-      "description": "The first EVER meeting between Silver Surfer and Spider-Man!",
-      "image_src": "https://comicvine1.cbsistatic.com/uploads/scale_large/11/117763/2403513-ss14.png",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "March 1970",
-      "type": "comic_book"
-    },
-    {
-      "id": "8",
-      "name": "Batman in Bethlehem",
-      "description": "Meet Damian Wayne, the Batman of Tomorrow in this special issue set 15 years from now in a nightmarish future Gotham!",
-      "image_src": "https://comicvine1.cbsistatic.com/uploads/scale_large/5/56044/1973911-batman__1940__666.jpeg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "DC",
-      "date": "July 25, 2007",
-      "type": "comic_book"
-    },
-    {
-      "id": "9",
-      "name": "I'm in Your Head",
-      "description": "Moondragon is a hero. With her wife at her side, she came to our reality from a dimension of heroes - to save us all from evil. ",
-      "image_src": "https://comicvine1.cbsistatic.com/uploads/scale_large/6/67663/7502950-05.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "August 05, 2020",
-      "type": "comic_book"
-    },
-    {
-      "id": "10",
-      "name": "Deadpool",
-      "description": "Deadpool's newest mercenary job has him going after the King of Monsters, who has claimed a new kingdom for his monstrous subjects...on Staten Island!",
-      "image_src": "https://cdn11.bigcommerce.com/s-0kvv9/images/stencil/1280x1280/products/308800/440558/sep190836__51647.1569616611.jpg?c=2&imbypass=on",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "November 20, 2019",
-      "type": "comic_book"
-    },
-    {
-      "id": "11",
-      "name": "DCeased: Dead Planet",
-      "description": "The sequel to the bestselling miniseries continues! The Justice League is trapped on Earth, and they’ve discovered that life still survives on this dead planet!",
-      "image_src": "https://comicvine1.cbsistatic.com/uploads/scale_large/6/67663/7500407-02.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "August 04, 2020",
-      "type": "comic_book"
-    },
-    {
-      "id": "12",
-      "name": "Batman: The Adventure Continues",
-      "description": "Deathstroke makes his move against the Dark Knight, but he's not just going to strike at him physically-he's going to try to destroy him completely by using the rest of the Bat-Family against him!",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "image_src": "https://www.midtowncomics.com/images/PRODUCT/XL/1924692_xl.jpg",
-      "publisher": "DC",
-      "date": "August 04, 2020",
-      "type": "comic_book"
-    }
-  ],
-  "Movies": [
-    {
-      "id": "13",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "14",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "15",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "16",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "17",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "18",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    }
-  ],
-  "Series": [
-    {
-      "id": "19",
-      "name": "The Flash",
-      "description": "The Flash is an American superhero television series developed by Greg Berlanti, Andrew Kreisberg, and Geoff Johns, airing on The CW. It is based on the DC Comics character Barry Allen / Flash, a costumed superhero crime-fighter with the power to move at superhuman speeds.",
-      "image_src": "https://images5.alphacoders.com/724/thumb-1920-724044.png",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "DC",
-      "date": "October 7, 2014",
-      "type": "series"
-    },
-    {
-      "id": "20",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "21",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "22",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "23",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    },
-    {
-      "id": "24",
-      "name": "Ultimate Fallout #4",
-      "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
-      "image_src": "https://comics.gocollect.com/uploads/collection/9/images/pub/668136_e040006170b05f2f57948f152feb94d27f5f0a79.jpg",
-      "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
-      "publisher": "Marvel",
-      "date": "September 30, 2011",
-      "type": "comic_book"
-    }
-  ]
+  "collection": {
+    "Popular": [
+      {
+        "id": "1",
+        "name": "Ultimate Fallout #4",
+        "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
+        "image_src": "https://i.annihil.us/u/prod/marvel/i/mg/6/c0/5915d778aff00/clean.jpg",
+        "yt_link": "https://www.youtube.com/embed/qnb_NxbVP_w",
+        "publisher": "Marvel",
+        "date": "September 30, 2011",
+        "type": "comic book"
+      },
+      {
+        "id": "2",
+        "name": "Batman: The Killing Joke",
+        "description": "Batman: The Killing Joke is a 1988 DC Comics one-shot graphic novel featuring the characters Batman and the Joker written by Alan Moore and illustrated by Brian Bolland. The Killing Joke provides an origin story for the supervillain the Joker, loosely adapted from the 1951 story arc The Man Behind the Red Hood!.",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/91CLsiEAX8L.jpg",
+        "yt_link": "https://www.youtube.com/embed/ZQTqu1_iQkw",
+        "publisher": "DC",
+        "date": "March 1988",
+        "type": "comic book"
+      },
+      {
+        "id": "3",
+        "name": "The Uncanny X-Men: The Dark Phoenix Saga #136",
+        "description": "CHILDREN OF LIGHT AND DARKNESS! The Dark Phoenix has defeated the X-Men. Who remains with the power to oppose her? In a last ditch effort, Professor X enters the fray!",
+        "image_src": "https://i.pinimg.com/originals/30/a5/09/30a509b9cf2178581fd1636cb89700d0.jpg",
+        "yt_link": "https://www.youtube.com/embed/iCvHgweI6Sc",
+        "publisher": "Marvel",
+        "date": "August 10, 1980",
+        "type": "comic book"
+      },
+      {
+        "id": "4",
+        "name": "Immortal Hulk (2018) #1",
+        "description": "HORROR HAS A NAME. You’d never notice the man. He doesn’t like to be noticed. He’s quiet. Calm. Never complains. If someone were to walk up and shoot him in the head... all he’d do is die. Until night falls. And someone else gets up again. The man’s name is Banner. The horror is THE IMMORTAL HULK.",
+        "image_src": "https://i.annihil.us/u/prod/marvel/i/mg/3/50/5b0f16d976240/clean.jpg",
+        "yt_link": "https://www.youtube.com/embed/-DtuXuEztHM",
+        "publisher": "Marvel",
+        "date": "November 21, 2018",
+        "type": "comic book"
+      },
+      {
+        "id": "5",
+        "name": "Black Panther (2018) #1",
+        "description": "Witness the fallout of DEATH OF SPIDER-MAN and the birth of the new ULTIMATE COMCIS UNIVERSE.",
+        "image_src": "https://i.annihil.us/u/prod/marvel/i/mg/f/b0/5afc7ec776ea2/clean.jpg",
+        "yt_link": "https://www.youtube.com/embed/ry8e5ldzLDQ",
+        "publisher": "Marvel",
+        "date": "May 23, 2018",
+        "type": "comic book"
+      },
+      {
+        "id": "6",
+        "name": "Flashpoint #1",
+        "description": "Not a dream, not an imaginary story, not an elseworld. This is Flash Fact: When Barry Allen wakes at his desk, he discovers the world has changed. Family is alive, loved ones are strangers, and close friends are different, gone or worse. It's a world on the brink of a cataclysmic war – but where are Earth's Greatest Heroes to stop it? It's a place where America's last hope is Cyborg, who hopes to gather the forces of The Outsider, The Secret 7, S!H!A!Z!A!M!, Citizen Cold and other new and familiar-yet-altered faces! It's a world that could be running out of time, if The Flash can't find the villain who altered the time line!Welcome to FLASHPOINT!",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/81LG8+sYUgL.jpg",
+        "yt_link": "https://www.youtube.com/embed/sXuGf1xobKI",
+        "publisher": "Marvel",
+        "date": "May 11, 2011",
+        "type": "comic book"
+      }
+    ],
+    "Comics": [
+      {
+        "id": "7",
+        "name": "The Batman Who Laughs",
+        "description": "Left rattled by the events of DARK NIGHTS: METAL, Bruce Wayne must come face to face with the nightmares spawned from the Dark Multiverse. But even though evil devoured evil in the collapse of Challengers Mountain, the Dark Knight still has his doubts. He discovers that the Batman Who Laughs not only survived the fight with The Joker at the end of METAL, but now he is enacting a sinister plan across the Multiverse—something both terrifying and oddly familiar. But when Bruce Wayne realizes the only way to stop this madman is to kill him, he must consider violating the very rule Batman won’t break…the same rule that created this insatiable villain—the Batman Who Laughs! 'A Batman who laughs is a Batman who always wins.'",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/91+1r2i9OJL.jpg",
+        "yt_link": "https://www.youtube.com/embed/63glDub0auo",
+        "publisher": "DC",
+        "date": "March 1970",
+        "type": "comic book"
+      },
+      {
+        "id": "8",
+        "name": "Age of Heroes (2010)",
+        "description": "What mission could cause Maria Hill, Sharon Carter, and Victoria Hand, the three Avengers liaisons, to join forces? Plus, the Blue Marvel makes his presence known around the world to re-establish himself as a hero of the people. TASKMASTER learns in Tokyo that The Heroic Age is a none too friendly place for villains who have fallen from the top! Plus, a nutty, new turning point in the life of Squirrel Girl!",
+        "image_src": "https://i.annihil.us/u/prod/marvel/i/mg/f/10/56afb12ce64dc/clean.jpg",
+        "yt_link": "https://www.youtube.com/embed/sLW3qGQQkl4",
+        "publisher": "Marvel",
+        "date": "July 21, 2010",
+        "type": "comic book"
+      },
+      {
+        "id": "9",
+        "name": "Cosmic Ghost Rider: Baby Thanos Must Die",
+        "description": "Collects Cosmic Ghost Rider #1-5. You knew him as the Punisher. Then Frank Castle made a deal with the devil that made him the Ghost Rider. A deal with Galactus made him cosmic. And a deal with Thanos made him…dead?! Not to worry, Castle doesn’t die easy. He’s back — and he’s got a plan to make the universe a better place! It all starts with an idea so simple he can’t believe no one’s ever done it before. But as with all things worth doing, it’s not going to be easy. Castle takes on space sharks, faces down the future Guardians of the Galaxy and runs into Galactus during a bar fight! And don’t forget…baby Thanos?! It’s Frank…er…the Punish…um…Cosmic Ghost Rider in the craziest caper you’ve ever seen!",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/918AI4vG4bL.jpg",
+        "yt_link": "https://www.youtube.com/embed/iWFWUPJtW4g",
+        "publisher": "Marvel",
+        "date": "January 23, 2019",
+        "type": "comic book"
+      },
+      {
+        "id": "10",
+        "name": "Batman: The Joker War",
+        "description": "This is it: the Clown Prince of Crime battles the Dark Knight Detective head-to-head for the last time. And one way or another, this will be the final chapter of their agelong conflict. The Clown Prince of Crime and the Dark Knight Detective go head-to-head for the last time.",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/81fgZOcBBzL.jpg",
+        "yt_link": "https://www.youtube.com/embed/7ohdYkvcavE",
+        "publisher": "DC",
+        "date": "Expected on February 9, 2021",
+        "type": "comic book"
+      },
+      {
+        "id": "11",
+        "name": "DCeased: Dead Planet",
+        "description": "The sequel to the bestselling miniseries continues! The Justice League is trapped on Earth, and they’ve discovered that life still survives on this dead planet! Survival is precarious, though-and with billions of infected still roaming the surface, death lies around every corner. But it isn’t just the anti-living our heroes have to worry about, because John Constantine, Swamp Thing, and Zatanna are about to discover another evil growing...",
+        "image_src": "https://comicvine1.cbsistatic.com/uploads/scale_large/6/67663/7500407-02.jpg",
+        "yt_link": "https://www.youtube.com/embed/_EFYKVIVPq0",
+        "publisher": "DC",
+        "date": "August 04, 2020",
+        "type": "comic book"
+      },
+      {
+        "id": "12",
+        "name": "Blackest Night",
+        "description": "Blackest Night is a 2009–2010 American comic book crossover storyline published by DC Comics, consisting of an eponymous central miniseries, written by Geoff Johns and penciled by Ivan Reis, along with a number of tie-in issues.",
+        "yt_link": "https://www.youtube.com/embed/e16wwFHzh-E",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/81u7BmtEoBL.jpg",
+        "publisher": "DC",
+        "date": "June 2009",
+        "type": "comic book"
+      }
+    ],
+    "Movies": [
+      {
+        "id": "13",
+        "name": "Avengers: Infinity War",
+        "description": "Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos. On a mission to collect all six Infinity Stones, Thanos plans to use the artifacts to inflict his twisted will on reality. The fate of the planet and existence itself has never been more uncertain as everything the Avengers have fought for has led up to this moment.",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/A1t8xCe9jwL._AC_SL1500_.jpg",
+        "yt_link": "https://www.youtube.com/embed/6ZfuNTqbHE8",
+        "publisher": "Marvel",
+        "date": "April 27, 2018",
+        "type": "movie"
+      },
+      {
+        "id": "14",
+        "name": "Spider-Man: Into the Spider-Verse",
+        "description": "Bitten by a radioactive spider in the subway, Brooklyn teenager Miles Morales suddenly develops mysterious powers that transform him into the one and only Spider-Man. When he meets Peter Parker, he soon realizes that there are many others who share his special, high-flying talents. Miles must now use his newfound skills to battle the evil Kingpin, a hulking madman who can open portals to other universes and pull different versions of Spider-Man into our world.",
+        "image_src": "https://images-na.ssl-images-amazon.com/images/I/71Xjf1rgCdL._AC_SL1482_.jpg",
+        "yt_link": "https://www.youtube.com/embed/tg52up16eq0&t=5s",
+        "publisher": "Sony Pictures Animation",
+        "date": "December 14, 2018",
+        "type": "movie"
+      },
+      {
+        "id": "15",
+        "name": "Thor: Ragnarok",
+        "description": "Imprisoned on the other side of the universe, the mighty Thor finds himself in a deadly gladiatorial contest that pits him against the Hulk, his former ally and fellow Avenger. Thor's quest for survival leads him in a race against time to prevent the all-powerful Hela from destroying his home world and the Asgardian civilization.",
+        "image_src": "https://i.pinimg.com/originals/75/5d/5a/755d5aca070a90bdb2fa9f65b644e0fd.png",
+        "yt_link": "https://www.youtube.com/embed/ue80QwXMRHg",
+        "publisher": "Marvel Studios",
+        "date": "November 3, 2017",
+        "type": "movie"
+      },
+      {
+        "id": "16",
+        "name": "Joker",
+        "description": "Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a futile attempt to feel like he's part of the world around him. Isolated, bullied and disregarded by society, Fleck begins a slow descent into madness as he transforms into the criminal mastermind known as the Joker.",
+        "image_src": "https://www.joblo.com/assets/images/joblo/posters/2019/08/joker-poster-main2.jpg",
+        "yt_link": "https://www.youtube.com/embed/zAGVQLHvwOY",
+        "publisher": "Warner Bros. Pictures",
+        "date": "October 4, 2019",
+        "type": "movie"
+      },
+      {
+        "id": "17",
+        "name": "Deadpool 2",
+        "description": "Wisecracking mercenary Deadpool meets Russell, an angry teenage mutant who lives at an orphanage. When Russell becomes the target of Cable -- a genetically enhanced soldier from the future -- Deadpool realizes that he'll need some help saving the boy from such a superior enemy. He soon joins forces with Bedlam, Shatterstar, Domino and other powerful mutants to protect young Russell from Cable and his advanced weaponry.",
+        "image_src": "https://lh3.googleusercontent.com/proxy/tNNHX66dk7Zrz8rUI3lVe_CinU_wFaiUtaUx_PZNHaxbHwf29t7tT2cwhqRatZa9K9TOrAROs2l0Lpjz4ZwnDCfF081C-kZZciLSNfAIbRW2MXf4x6T3",
+        "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
+        "publisher": "20th Century Fox",
+        "date": "May 18, 2018",
+        "type": "movie"
+      },
+      {
+        "id": "18",
+        "name": "The Dark Knight",
+        "description": "With the help of allies Lt. Jim Gordon (Gary Oldman) and DA Harvey Dent (Aaron Eckhart), Batman (Christian Bale) has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker (Heath Ledger) suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.",
+        "image_src": "https://i.pinimg.com/originals/cc/47/a5/cc47a507854dfe4ea145ebb4c9ae51c4.jpg",
+        "yt_link": "https://www.youtube.com/embed/EXeTwQWrcwY",
+        "publisher": "Warner Bros. Pictures",
+        "date": "July 18, 2008",
+        "type": "movies"
+      }
+    ],
+    "Series": [
+      {
+        "id": "19",
+        "name": "The Flash",
+        "description": "The Flash is an American superhero television series developed by Greg Berlanti, Andrew Kreisberg, and Geoff Johns, airing on The CW. It is based on the DC Comics character Barry Allen / Flash, a costumed superhero crime-fighter with the power to move at superhuman speeds.",
+        "image_src": "https://images5.alphacoders.com/724/thumb-1920-724044.png",
+        "yt_link": "https://www.youtube.com/embed/Q8tUWOVqkSU",
+        "publisher": "The CW",
+        "date": "October 7, 2014",
+        "type": "series"
+      },
+      {
+        "id": "20",
+        "name": "Daredevil",
+        "description": "The first in a planned series of shows detailing the Marvel universe, 'Daredevil' follows Matt Murdock, attorney by day and vigilante by night. Blinded in an accident as a child, Murdock uses his heightened senses as Daredevil to fight crime on the streets of New York after the sun goes down. While Murdock's day job requires him to believe in the criminal justice system, his alter ego does not follow suit, leading him to take the law into his own hands to protect his Hell's Kitchen neighborhood and the surrounding communities.",
+        "image_src": "https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_.jpg",
+        "yt_link": "https://www.youtube.com/embed/jAy6NJ_D5vU",
+        "publisher": "Marvel",
+        "date": "April 10, 2015",
+        "type": "series"
+      },
+      {
+        "id": "21",
+        "name": "Luke Cage",
+        "description": "This gritty, action-packed drama follows the evolution of Luke Cage (Mike Colter), a man with super strength and unbreakable skin caused by a sabotaged experiment. After a failed relationship with fellow superhero Jessica Jones, Cage tries to rebuild a quiet life in Harlem, New York --until he is pulled out of the shadows and forced into a battle for his city. Along the way, Cage cannot avoid confronting his past, which he has worked hard to bury. 'Marvel's Luke Cage' is the third show in the Netflix-original Defenders series.",
+        "image_src": "https://pmcdeadline2.files.wordpress.com/2018/05/luke_cage_s2_key-art.jpg",
+        "yt_link": "https://www.youtube.com/embed/mLcsmkHWMkU",
+        "publisher": "Marvel",
+        "date": "September 30, 2016",
+        "type": "series"
+      },
+      {
+        "id": "22",
+        "name": "Black Lightning",
+        "description": "CW and Greg Berlanti expand the footprint of their DC Comics universe with this exploration of the intersection between family life and being a superhero. As a younger man, Jefferson Pierce donned the suit of a vigilante and protected the streets of his city, but he believed he'd left those days in the past. He learns that life doesn't always work out as planned when his daughter, Jennifer -- a star student who is determined to achieve justice at any cost -- gets recruited by a street gang. In order to protect his family, Jefferson sees no choice but to once again become Black Lightning.",
+        "image_src": "https://i.pinimg.com/originals/7e/11/bf/7e11bf487073744229ba0b62fe7f1f85.jpg",
+        "yt_link": "https://www.youtube.com/embed/3LAUGA01mUc",
+        "publisher": "The CW",
+        "date": "January 16, 2018",
+        "type": "series"
+      },
+      {
+        "id": "23",
+        "name": "Cloak & Dagger",
+        "description": "The collapse of an oil rig in New Orleans owned by the company Roxxon causes two teenagers to become unlikely friends. Tandy Bowen and Tyrone Johnson come from vastly different backgrounds -- Tandy, from a very wealthy upbringing, and Tyrone, a boy from Boston who has a stutter. As runaways, the two teens are targeted by drug cartels on the streets of New York City. When circumstances help form a tight bond between the couple, their developing abilities and feelings make things more complicated.",
+        "image_src": "https://m.media-amazon.com/images/M/MV5BNTU4NzU2OTc5NF5BMl5BanBnXkFtZTgwMDg3MzA0NzM@._V1_.jpg",
+        "yt_link": "https://www.youtube.com/embed/zW_4nKoIvbw",
+        "publisher": "Freeform",
+        "date": "June 7, 2018",
+        "type": "series"
+      },
+      {
+        "id": "24",
+        "name": "Agents of S.H.I.E.L.D.",
+        "description": "The worldwide law-enforcement organization known as S.H.I.E.L.D. (Strategic Homeland Intervention Enforcement and Logistics Division) employs an elite team of agents who investigate strange occurrences around the globe and beyond. Its members -- each of whom brings a specialty to the group -- work to protect those who cannot protect themselves from extraordinary and inconceivable threats, including a formidable group known as Hydra. The series is set in the Marvel Cinematic Universe and acknowledges the continuity of the franchise's films and other television series.",
+        "image_src": "https://vignette.wikia.nocookie.net/marvelcinematicuniverse/images/c/c3/Agents_of_HYDRA_Poster.jpg/revision/latest?cb=20170308053303",
+        "yt_link": "https://www.youtube.com/embed/T3T-evQZiQo",
+        "publisher": "Marvel",
+        "date": "September 24, 2013",
+        "type": "series"
+      }
+    ]
+  }
 }

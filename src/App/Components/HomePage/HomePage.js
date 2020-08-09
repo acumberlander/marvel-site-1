@@ -2,18 +2,25 @@ import React, { Component } from "react";
 import "./HomePage.scss";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
-import data from "../../Helpers/Data/comicData.json";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 
 export class HomePage extends Component {
   state = {
-    popular: data.Popular,
-    movies: data.Movies,
-    comics: data.Comics,
-    series: data.Series,
+    popular: [],
+    movies: [],
+    comics: [],
+    series: [],
   };
 
   componentDidMount() {
-    // comicVine.getCharacters();
+    data.getCollection().then((res) => {
+      this.setState({
+        popular: res.Popular,
+        movies: res.Movies,
+        comics: res.Comics,
+        series: res.Series,
+      });
+    });
   }
 
   render() {

@@ -5,6 +5,9 @@ const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
 
 const createUser = (user) => axios.post(`${firebaseUrl}/users.json`, user);
 
+const updateUserCollection = (user, userKey) =>
+  axios.put(`${firebaseUrl}/users/${userKey}.json`, user);
+
 const getUserByUid = (uid) =>
   new Promise((resolve, reject) => {
     axios
@@ -31,7 +34,6 @@ const getAllUsers = () =>
     axios
       .get(`${firebaseUrl}/users.json`)
       .then((result) => {
-        console.log(result);
         const userObject = result.data;
         const userArray = [];
         if (userObject != null) {
@@ -51,4 +53,5 @@ export default {
   getAllUsers,
   getUserByUid,
   createUser,
+  updateUserCollection,
 };

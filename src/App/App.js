@@ -32,6 +32,7 @@ class App extends Component {
               fullName: user.displayName,
               email: user.email,
               uid: user.uid,
+              collection: user.collection,
             };
             userRequests.createUser(userInfo);
           }
