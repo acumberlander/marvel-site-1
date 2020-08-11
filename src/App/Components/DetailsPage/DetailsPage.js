@@ -33,12 +33,31 @@ export class DetailsPage extends Component {
     });
   }
 
-  addToCollection = () => {
-    const { contentItem } = this.state;
-    const uid = authRequests.getCurrentUid();
-    let itemObject = contentItem;
+  refreshState = (item) => {
+    const contentId = item.id;
+    data.getContentById(contentId).then((res) => {
+      this.setState({ contentItem: res });
+    });
+  };
 
-    collectionRequest.addCollectionItem(uid, itemObject);
+  //alternative option to change views/routing
+  //  changeView = (item) => {
+  //    const view = item.id;
+  //    let location = this.props.location;
+  //    location.pathname = `/details/${view}`;
+  //    this.props.history.push(location);
+  //  };
+
+  addToCollection = (contentItem) => {
+    const uid = authRequests.getCurrentUid();
+    data.getContentById(contentItem.id).then((res) => {
+      const addedItem = res;
+      data.addCollectionItem(uid, addedItem).then(() => {
+        data.getAllCollectionItemsByUid(uid).then((res) => {
+          this.setState({ myCollection: res });
+        });
+      });
+    });
   };
 
   removeFromCollection = () => {
@@ -59,6 +78,8 @@ export class DetailsPage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          refreshState={this.refreshState}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -69,6 +90,7 @@ export class DetailsPage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -79,6 +101,7 @@ export class DetailsPage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -89,6 +112,7 @@ export class DetailsPage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -117,7 +141,7 @@ export class DetailsPage extends Component {
             <button
               onClick={this.removeFromCollection}
               type="button"
-              className="add-to-list-btn btn btn-danger"
+              className="remove-from-list-btn btn btn-danger"
             >
               Remove from Collection
             </button>

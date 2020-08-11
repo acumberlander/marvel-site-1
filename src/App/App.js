@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import * as firebase from "firebase/app";
-// import Characters from "../Components/Characters/Characters";
+import "./App.scss";
+import userRequests from "./Helpers/Data/Requests/userRequests";
+import authRequests from "./Helpers/Data/Requests/authRequests";
+import connection from "./Helpers/Data/connection";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
 import HomePage from "./Components/HomePage/HomePage";
 import DetailsPage from "./Components/DetailsPage/DetailsPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
-import "./App.scss";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import userRequests from "./Helpers/Data/Requests/userRequests";
-import authRequests from "./Helpers/Data/Requests/authRequests";
-import connection from "./Helpers/Data/connection";
 
 class App extends Component {
   state = {
@@ -80,8 +79,17 @@ class App extends Component {
             <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
-                  <Route path="/" exact component={HomePage} />
-                  <Route path="/home" component={HomePage} />
+                  <Route
+                    path="/"
+                    exact
+                    component={HomePage}
+                    authed={this.state.authed}
+                  />
+                  <Route
+                    path="/home"
+                    component={HomePage}
+                    authed={this.state.authed}
+                  />
                   <Route
                     exact
                     path="/details/:id"

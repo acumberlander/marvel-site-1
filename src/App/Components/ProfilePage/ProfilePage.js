@@ -19,28 +19,37 @@ export class ProfilePage extends Component {
     });
   }
 
-  removeFromCollection = () => {
-    const { contentItem } = this.state;
-    const uid = authRequests.getCurrentUid();
-    let itemObject = contentItem;
+  refreshState = (item) => {
+    const contentItem = item;
+    this.setState({ contentItem: contentItem });
+  };
 
+  removeFromCollection = (itemObject) => {
+    const uid = authRequests.getCurrentUid();
     collectionRequest.deleteFromCollection(uid, itemObject);
+    userRequests.getUserByUid(uid).then((user) => {
+      let collection = user.collection;
+      this.setState({ user: user, collection: collection });
+    });
   };
 
   render() {
     const { user, collection } = this.state;
-    const myCollection = collection.map((item) => {
-      return (
+    const myCollection = collection ? (
+      collection.map((item) => (
         <CardTileComponent
           contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
           inCollection={true}
+          refreshState={this.refreshState}
           removeFromCollection={this.removeFromCollection}
         />
-      );
-    });
+      ))
+    ) : (
+      <p>You have no items in your collection</p>
+    );
     return (
       <>
         <div className="profile-page-container">
