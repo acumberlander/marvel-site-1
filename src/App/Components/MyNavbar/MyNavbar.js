@@ -10,11 +10,12 @@ import List from "@material-ui/core/List";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import HomeIcon from "@material-ui/icons/Home";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import LoginModal from "../LoginModal/LoginModal";
 import Button from "@material-ui/core/Button";
+import { ProfilePage } from "./../ProfilePage/ProfilePage";
 
 class MyNavbar extends React.Component {
   static propTypes = {
@@ -49,7 +50,7 @@ class MyNavbar extends React.Component {
   };
 
   buildNavBar = () => {
-    const { isAuthed } = this.props;
+    const { isAuthed, userObject } = this.props;
     if (isAuthed) {
       return (
         <div className="nav-group">
@@ -72,7 +73,7 @@ class MyNavbar extends React.Component {
                 alt="Sonic Profile Pic"
                 className="drawer-profile-pic"
               ></img>
-              <h2>{this.props.userObject.fullName}</h2>
+              <h2>{userObject.fullName}</h2>
               <h4>Green Hills</h4>
             </div>
             <Divider />
@@ -83,17 +84,17 @@ class MyNavbar extends React.Component {
                   onClick={this.toggleDrawer}
                   component={Link}
                   to="/home"
-                  key={"Discover"}
+                  key={"Home"}
                 >
-                  <ListItemIcon>{<VisibilityIcon />}</ListItemIcon>
-                  <ListItemText primary={"Discover"} />
+                  <ListItemIcon>{<HomeIcon />}</ListItemIcon>
+                  <ListItemText primary={"Home"} />
                 </ListItem>,
 
                 <ListItem
                   button
                   onClick={this.toggleDrawer}
                   component={Link}
-                  to="/profile"
+                  to={`/profile/${userObject.id}`}
                   key={"Profile"}
                 >
                   <ListItemIcon>{<AccountCircleIcon />}</ListItemIcon>
@@ -148,10 +149,10 @@ class MyNavbar extends React.Component {
                   onClick={this.toggleDrawer}
                   component={Link}
                   to="/home"
-                  key={"Discover"}
+                  key={"Home"}
                 >
-                  <ListItemIcon>{<VisibilityIcon />}</ListItemIcon>
-                  <ListItemText primary={"Discover"} />
+                  <ListItemIcon>{<HomeIcon />}</ListItemIcon>
+                  <ListItemText primary={"Home"} />
                 </ListItem>
               }
             </List>

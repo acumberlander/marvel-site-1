@@ -4,6 +4,7 @@ import * as firebase from "firebase/app";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
 import HomePage from "./Components/HomePage/HomePage";
 import DetailsPage from "./Components/DetailsPage/DetailsPage";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import "./App.scss";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import userRequests from "./Helpers/Data/Requests/userRequests";
@@ -79,43 +80,19 @@ class App extends Component {
             <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
-                  <Route
-                    path="/"
-                    exact
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/home"
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/home" component={HomePage} />
                   <Route
                     exact
                     path="/details/:id"
                     component={DetailsPage}
                     authed={this.state.authed}
                   />
-                  {/* <Route
-                    path="/profile"
+                  <Route
+                    path={`/profile/:${this.state.currentUid}`}
                     component={ProfilePage}
                     authed={this.state.authed}
                   />
-                  <Route
-                    path="/profile-settings"
-                    component={ProfileSettings}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/chat"
-                    component={Chat}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/notifications"
-                    component={NotificationPage}
-                    authed={this.state.authed}
-                  />*/}
                 </Switch>
               </div>
             </div>

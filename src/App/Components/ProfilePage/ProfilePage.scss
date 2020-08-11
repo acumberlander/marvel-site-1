@@ -1,0 +1,35 @@
+.profile-page-container {
+  margin-top: 50px;
+  .profile-image-and-name {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-direction: column;
+    .image-div {
+      margin-bottom: 30px;
+    }
+  }
+
+  .profile-pic {
+    height: 15vh;
+    width: 15vh;
+    border-radius: 55rem;
+  }
+
+  .collection-div {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
+    h2 {
+      color: red;
+      margin-bottom: 50px;
+    }
+
+    .item-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

@@ -59,7 +59,6 @@ export class DetailsPage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          refresh={this.refreshState}
         />
       );
     });

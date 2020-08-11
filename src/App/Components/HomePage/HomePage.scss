@@ -27,10 +27,11 @@
 
   .slider-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
-    width: 95vw;
-    height: 45vh;
+    flex-wrap: wrap;
+    max-width: 95vw;
+    // height: 45vh;
     overflow: hidden;
   }
 }
