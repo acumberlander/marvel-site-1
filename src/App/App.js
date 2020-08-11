@@ -80,17 +80,8 @@ class App extends Component {
             <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
-                  <Route
-                    path="/"
-                    exact
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/home"
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
+                  <Route path="/" exact component={HomePage} />
+                  <Route path="/home" component={HomePage} />
                   <Route
                     exact
                     path="/details/:id"
@@ -98,26 +89,10 @@ class App extends Component {
                     authed={this.state.authed}
                   />
                   <Route
-                    path={`/profile/:${userObject.id}`}
+                    path={`/profile/:${this.state.currentUid}`}
                     component={ProfilePage}
                     authed={this.state.authed}
                   />
-                  {/*
-                  <Route
-                    path="/profile-settings"
-                    component={ProfileSettings}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/chat"
-                    component={Chat}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/notifications"
-                    component={NotificationPage}
-                    authed={this.state.authed}
-                  />*/}
                 </Switch>
               </div>
             </div>

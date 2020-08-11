@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./HomePage.scss";
+import authRequests from "../../Helpers/Data/Requests/authRequests";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
-import data from "../../Helpers/Data/Requests/collectionRequest";
 
 export class HomePage extends Component {
   state = {
@@ -10,9 +11,11 @@ export class HomePage extends Component {
     movies: [],
     comics: [],
     series: [],
+    myCollection: [],
   };
 
   componentDidMount() {
+    // console.log(authRequests.getCurrentUid());
     data.getCollection().then((res) => {
       this.setState({
         popular: res.Popular,
@@ -20,6 +23,9 @@ export class HomePage extends Component {
         comics: res.Comics,
         series: res.Series,
       });
+    });
+    data.getAllCollectionItemsByUid().then((res) => {
+      this.setState({ myCollection: res });
     });
   }
 

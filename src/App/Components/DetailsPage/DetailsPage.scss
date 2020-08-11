@@ -1,60 +1,65 @@
 .detail-page-container {
   width: 100%;
   padding: 50px 60px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   h2 {
     color: red;
-  }
-
-  #first-column {
-    display: flex;
-    flex-direction: column;
-    h2 {
-      text-align: left;
-    }
-
-    .misc-details {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      width: 20vw;
-    }
-
-    .add-to-list-btn {
-      width: 20vw;
-      margin-top: 20px;
-    }
-  }
-  #second-column {
-    width: 75%;
-    padding: 0 2.1vw;
-    h2 {
-      text-align: left;
-    }
-
-    .video-player {
-      height: 60vh;
-      width: 65vw;
-      margin-bottom: 3vh;
-    }
-
-    .details-header-div {
-      display: flex;
-    }
-    .details-column-container {
-      display: flex;
-      text-align: left;
-    }
-  }
-
-  .content-image {
-    height: 60vh;
-    width: 20vw;
   }
 
   .top-area {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    #first-column {
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      margin-right: auto;
+      h2 {
+        text-align: left;
+      }
+
+      .misc-details {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        width: 20vw;
+      }
+
+      .add-to-list-btn {
+        width: 20vw;
+        margin-top: 20px;
+      }
+    }
+    #second-column {
+      width: 1150px;
+      h2 {
+        text-align: left;
+      }
+
+      .video-player {
+        height: 637px;
+        width: 60vw;
+        margin-bottom: 3vh;
+      }
+
+      .details-header-div {
+        display: flex;
+      }
+      .details-column-container {
+        display: flex;
+        text-align: left;
+      }
+    }
+
+    .content-image {
+      height: 636px;
+      width: 420px;
+    }
   }
 
   .row-container {
@@ -63,11 +68,10 @@
   }
 
   .slider-row {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    width: 95vw;
+    display: grid;
     height: 45vh;
-    overflow: hidden;
+    width: 95vw;
+    grid-gap: 2em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 }
