@@ -4,6 +4,7 @@ import userRequests from "./userRequests";
 import authRequests from "./authRequests";
 
 const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
+// const uid = authRequests.getCurrentUid();
 
 const getCollection = () =>
   new Promise((resolve, reject) =>
@@ -84,7 +85,6 @@ const addCollectionItem = (uid, newItem) =>
 
 const deleteFromCollection = (uid, item) =>
   userRequests.getUserByUid(uid).then((res) => {
-    debugger;
     let userKey = res["id"];
     let userObject = res;
 

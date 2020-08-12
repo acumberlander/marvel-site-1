@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./HomePage.scss";
-import authRequests from "../../Helpers/Data/Requests/authRequests";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
+import authRequests from "../../Helpers/Data/Requests/authRequests";
+import connection from "../../Helpers/Data/connection";
 
 export class HomePage extends Component {
   state = {
@@ -12,10 +13,12 @@ export class HomePage extends Component {
     comics: [],
     series: [],
     myCollection: [],
+    inCollection: false,
   };
 
-  componentDidMount() {
-    // console.log(authRequests.getCurrentUid());
+  componentWillMount() {
+    // connection();
+
     data.getCollection().then((res) => {
       this.setState({
         popular: res.Popular,
@@ -24,21 +27,63 @@ export class HomePage extends Component {
         series: res.Series,
       });
     });
+
     data.getAllCollectionItemsByUid().then((res) => {
       this.setState({ myCollection: res });
     });
   }
 
+  refreshState = (item) => {
+    const contentItem = item;
+    this.setState({ contentItem: contentItem });
+  };
+
+  changeView = (item) => {
+    const view = item.id;
+    const location = {
+      pathname: `/${view}`,
+    };
+    this.props.history.push(location);
+  };
+
+  inCollection = (item) => {
+    const { myCollection } = this.state;
+    const filteredArr = myCollection.filter((i) => i.id === item.id);
+    if (filteredArr.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  addToCollection = (contentItem) => {
+    const uid = authRequests.getCurrentUid();
+    data.getContentById(contentItem.id).then((res) => {
+      const addedItem = res;
+      data.addCollectionItem(uid, addedItem).then(() => {
+        data.getAllCollectionItemsByUid(uid).then((res) => {
+          this.setState({ myCollection: res });
+        });
+      });
+    });
+  };
+
   render() {
-    const { popular, comics, movies, series } = this.state;
+    const { popular, comics, movies, series, inCollection } = this.state;
+    const { user } = this.props;
+    console.log(user);
     // Row logic
     const popularRow = popular.map((item) => {
+      this.inCollection(item);
       return (
         <CardTileComponent
           contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection}
+          refreshState={this.refreshState}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -49,6 +94,8 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          refreshState={this.refreshState}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -59,6 +106,8 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          refreshState={this.refreshState}
+          addToCollection={this.addToCollection}
         />
       );
     });
@@ -69,6 +118,8 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          refreshState={this.refreshState}
+          addToCollection={this.addToCollection}
         />
       );
     });
