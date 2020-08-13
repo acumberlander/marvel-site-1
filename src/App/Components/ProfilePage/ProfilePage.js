@@ -1,22 +1,29 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import "./ProfilePage.scss";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
 import userRequests from "../../Helpers/Data/Requests/userRequests";
 import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
 import CardTileComponent from "../CardTileComponent/CardTileComponent";
 
-export class ProfilePage extends Component {
+export class ProfilePage extends PureComponent {
   state = {
     user: {},
-    collection: [],
   };
 
   componentDidMount() {
-    const uid = authRequests.getCurrentUid();
-    userRequests.getUserByUid(uid).then((user) => {
-      let collection = user.collection;
-      this.setState({ user: user, collection: collection });
-    });
+    // const collection = this.props.user.collection;
+    // this.setState({ collection });
+    // userRequests.getUserByUid(uid).then((user) => {
+    //   let collection = user.collection;
+    //   this.setState({ user: user, collection: collection });
+    // });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const user = this.props.user;
+      this.setState({ user });
+    }
   }
 
   refreshState = (item) => {
@@ -25,16 +32,18 @@ export class ProfilePage extends Component {
   };
 
   removeFromCollection = (itemObject) => {
-    const uid = authRequests.getCurrentUid();
-    collectionRequest.deleteFromCollection(uid, itemObject);
-    userRequests.getUserByUid(uid).then((user) => {
-      let collection = user.collection;
-      this.setState({ user: user, collection: collection });
+    const uid = this.props.user.uid;
+    collectionRequest.deleteFromCollection(uid, itemObject).then(() => {
+      userRequests.getUserByUid(uid).then((user) => {
+        this.setState({ user: user });
+      });
     });
   };
 
   render() {
-    const { user, collection } = this.state;
+    const { user } = this.state;
+    const collection = user.collection;
+
     const myCollection = collection ? (
       collection.map((item) => (
         <CardTileComponent

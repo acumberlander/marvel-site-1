@@ -1,14 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import "./CardTileComponent.scss";
 import { Link } from "react-router-dom";
 import contentShape from "../../Helpers/PropShapes/contentShape";
-import authRequests from "../../Helpers/Data/Requests/authRequests";
-import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 
-export class CardTileComponent extends Component {
+export class CardTileComponent extends PureComponent {
   static propTypes = {
     contentItem: contentShape,
+    myCollection: [],
   };
+
+  // componentDidMount() {
+  //   data.getAllCollectionItemsByUid
+  // }
 
   addToCollection = (e) => {
     e.preventDefault();
@@ -17,24 +21,30 @@ export class CardTileComponent extends Component {
     addToCollection(contentItem);
   };
 
-  changeView = (e) => {
+  inCollection = (e) => {
     e.preventDefault();
+    const { inCollection, item } = this.props;
+
+    inCollection(item);
+  };
+
+  changeView = () => {
     const { changeView, contentItem } = this.props;
 
     changeView(contentItem);
   };
 
-  removeFromCollection = (e) => {
-    e.preventDefault();
+  removeFromCollection = () => {
     const { removeFromCollection, contentItem } = this.props;
 
     removeFromCollection(contentItem);
   };
 
   render() {
-    const { contentItem, inCollection, image, name } = this.props;
+    const { contentItem, image, name } = this.props;
     const contentDetails = `/details/${contentItem.id}`;
-    if (!inCollection) {
+    // myCollection.contains(`${contentItem.id}`);
+    if (!this.inCollection) {
       return (
         <>
           <div className="card-tile">

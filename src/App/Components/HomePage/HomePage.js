@@ -4,7 +4,7 @@ import data from "../../Helpers/Data/Requests/collectionRequest";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
-import connection from "../../Helpers/Data/connection";
+import userRequests from "../../Helpers/Data/Requests/userRequests";
 
 export class HomePage extends Component {
   state = {
@@ -14,11 +14,16 @@ export class HomePage extends Component {
     series: [],
     myCollection: [],
     inCollection: false,
+    user: {},
   };
 
-  componentWillMount() {
-    // connection();
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.user !== prevProps.user) {
+  //     this.fetchData(this.props.user);
+  //   }
+  // }
 
+  componentDidMount() {
     data.getCollection().then((res) => {
       this.setState({
         popular: res.Popular,
@@ -26,10 +31,6 @@ export class HomePage extends Component {
         comics: res.Comics,
         series: res.Series,
       });
-    });
-
-    data.getAllCollectionItemsByUid().then((res) => {
-      this.setState({ myCollection: res });
     });
   }
 
@@ -46,16 +47,6 @@ export class HomePage extends Component {
     this.props.history.push(location);
   };
 
-  inCollection = (item) => {
-    const { myCollection } = this.state;
-    const filteredArr = myCollection.filter((i) => i.id === item.id);
-    if (filteredArr.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   addToCollection = (contentItem) => {
     const uid = authRequests.getCurrentUid();
     data.getContentById(contentItem.id).then((res) => {
@@ -69,12 +60,17 @@ export class HomePage extends Component {
   };
 
   render() {
-    const { popular, comics, movies, series, inCollection } = this.state;
+    const { popular, comics, movies, series } = this.state;
     const { user } = this.props;
-    console.log(user);
+    const myCollection = user.collection;
+    const inCollection = (item) => {
+      const filteredArr = myCollection.filter((i) => i.id === item.id);
+
+      return filteredArr.length > 0 ? true : false;
+    };
+
     // Row logic
     const popularRow = popular.map((item) => {
-      this.inCollection(item);
       return (
         <CardTileComponent
           contentItem={item}
@@ -94,6 +90,7 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection}
           refreshState={this.refreshState}
           addToCollection={this.addToCollection}
         />
@@ -106,6 +103,7 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection}
           refreshState={this.refreshState}
           addToCollection={this.addToCollection}
         />
@@ -118,6 +116,7 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection}
           refreshState={this.refreshState}
           addToCollection={this.addToCollection}
         />
