@@ -3,12 +3,11 @@ import * as firebase from "firebase/app";
 import "./App.scss";
 import userRequests from "./Helpers/Data/Requests/userRequests";
 import authRequests from "./Helpers/Data/Requests/authRequests";
+import data from "./Helpers/Data/Requests/collectionRequest";
 import connection from "./Helpers/Data/connection";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
-import HomePage from "./Components/HomePage/HomePage";
-import DetailsPage from "./Components/DetailsPage/DetailsPage";
-import ProfilePage from "./Components/ProfilePage/ProfilePage";
+import routes from "./Helpers/Routes/routes";
 
 class App extends Component {
   state = {
@@ -79,28 +78,13 @@ class App extends Component {
             <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
-                  <Route
-                    path="/"
-                    exact
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path="/home"
-                    component={HomePage}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    exact
-                    path="/details/:id"
-                    component={DetailsPage}
-                    authed={this.state.authed}
-                  />
-                  <Route
-                    path={`/profile/:${this.state.currentUid}`}
-                    component={ProfilePage}
-                    authed={this.state.authed}
-                  />
+                  {routes.map(({ path, component: C }) => (
+                    <Route
+                      path={path}
+                      authed={this.state.authed}
+                      render={() => <C user={userObject} />}
+                    ></Route>
+                  ))}
                 </Switch>
               </div>
             </div>

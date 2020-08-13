@@ -1,12 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
 import authRequests from "../../Helpers/Data/Requests/authRequests";
+import userRequests from "../../Helpers/Data/Requests/userRequests";
 
-export class DetailsPage extends Component {
+export class DetailsPage extends PureComponent {
   state = {
     contentItem: contentShape,
     popular: [],
@@ -14,9 +15,9 @@ export class DetailsPage extends Component {
     comics: [],
     series: [],
     collection: [],
+    myCollection: [],
+    inCollection: false,
   };
-
-  defaultItem = {};
 
   componentDidMount() {
     data.getCollection().then((res) => {
@@ -27,11 +28,16 @@ export class DetailsPage extends Component {
         series: res.Series,
       });
     });
-    const contentId = this.props.match.params.id;
-    data.getContentById(contentId).then((res) => {
-      this.setState({ contentItem: res });
-    });
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (this.props !== prevProps) {
+  //     const contentId = this.props.match.params.id;
+  //     data.getContentById(contentId).then((res) => {
+  //       this.setState({ contentItem: res });
+  //     });
+  //   }
+  // }
 
   refreshState = (item) => {
     const contentId = item.id;
@@ -48,28 +54,36 @@ export class DetailsPage extends Component {
   //    this.props.history.push(location);
   //  };
 
-  addToCollection = (contentItem) => {
-    const uid = authRequests.getCurrentUid();
-    data.getContentById(contentItem.id).then((res) => {
+  addToCollection = (cItem) => {
+    const { contentItem } = this.state;
+    cItem = contentItem;
+    const uid = this.props.user.uid;
+    data.getContentById(cItem.id).then((res) => {
       const addedItem = res;
       data.addCollectionItem(uid, addedItem).then(() => {
         data.getAllCollectionItemsByUid(uid).then((res) => {
+          console.log(res);
           this.setState({ myCollection: res });
         });
       });
     });
   };
 
-  removeFromCollection = () => {
-    const { contentItem } = this.state;
-    const uid = authRequests.getCurrentUid();
-    let itemObject = contentItem;
+  // removeFromCollection = () => {
+  //   const { contentItem } = this.state;
+  //   // const uid = authRequests.getCurrentUid();
+  //   let itemObject = contentItem;
 
-    collectionRequest.deleteFromCollection(uid, itemObject);
-  };
+  //   collectionRequest.deleteFromCollection(uid, itemObject);
+  // };
 
   render() {
     const { contentItem } = this.state;
+    const contentId = this.props.match.params.id;
+    data.getContentById(contentId).then((res) => {
+      this.setState({ contentItem: res });
+    });
+
     const { popular, movies, comics, series } = this.state;
     const popularRow = popular.map((item) => {
       return (
@@ -116,6 +130,12 @@ export class DetailsPage extends Component {
         />
       );
     });
+    // const makeButton = (inCollection) => {
+    //   // const uid = authRequests.getCurrentUid();
+    //   data.getAllCollectionItemsByUid(uid).then((myCollection) => {
+    //     console.log(myCollection);
+    //   });
+    // };
     return (
       <div className="detail-page-container">
         <div className="top-area">
@@ -131,6 +151,7 @@ export class DetailsPage extends Component {
               <span>Date: {contentItem.date}</span>
               <span>Type: {contentItem.type}</span>
             </div>
+            {/* {makeButton()} */}
             <button
               onClick={this.addToCollection}
               type="button"
