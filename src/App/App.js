@@ -1,15 +1,14 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import * as firebase from "firebase/app";
 import "./App.scss";
 import userRequests from "./Helpers/Data/Requests/userRequests";
 import authRequests from "./Helpers/Data/Requests/authRequests";
-import data from "./Helpers/Data/Requests/collectionRequest";
 import connection from "./Helpers/Data/connection";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MyNavbar from "./Components/MyNavbar/MyNavbar";
 import routes from "./Helpers/Routes/routes";
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     authed: false,
     currentUid: "",
@@ -78,11 +77,13 @@ class App extends Component {
             <div className="app-container">
               <div className="d-flex justify-content-center">
                 <Switch>
-                  {routes.map(({ path, component: C }) => (
+                  {routes.map(({ path, component: C, key, exact }) => (
                     <Route
+                      key={key}
+                      exact={exact}
                       path={path}
                       authed={this.state.authed}
-                      render={() => <C user={userObject} />}
+                      render={(props) => <C user={userObject} props={props} />}
                     ></Route>
                   ))}
                 </Switch>

@@ -1,12 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./HomePage.scss";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 import { Carousel } from "react-bootstrap";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
-import authRequests from "../../Helpers/Data/Requests/authRequests";
-import userRequests from "../../Helpers/Data/Requests/userRequests";
 
-export class HomePage extends Component {
+export class HomePage extends PureComponent {
   state = {
     popular: [],
     movies: [],
@@ -17,12 +15,7 @@ export class HomePage extends Component {
     user: {},
   };
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.user !== prevProps.user) {
-  //     this.fetchData(this.props.user);
-  //   }
-  // }
-
+  // Lifecycles
   componentDidMount() {
     data.getCollection().then((res) => {
       this.setState({
@@ -34,27 +27,31 @@ export class HomePage extends Component {
     });
   }
 
-  refreshState = (item) => {
-    const contentItem = item;
-    this.setState({ contentItem: contentItem });
-  };
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const contentId = this.props.props.match.params.id;
+      const myCollection = this.props.user.collection;
+      data.getContentById(contentId).then((res) => {
+        this.setState({ contentItem: res, myCollection: myCollection });
+      });
+    }
+  }
 
-  changeView = (item) => {
-    const view = item.id;
-    const location = {
-      pathname: `/${view}`,
-    };
-    this.props.history.push(location);
-  };
-
+  // Add & Delete from User Collection
   addToCollection = (contentItem) => {
-    const uid = authRequests.getCurrentUid();
-    data.getContentById(contentItem.id).then((res) => {
-      const addedItem = res;
-      data.addCollectionItem(uid, addedItem).then(() => {
-        data.getAllCollectionItemsByUid(uid).then((res) => {
-          this.setState({ myCollection: res });
-        });
+    const uid = this.props.user.uid;
+    data.addCollectionItem(uid, contentItem).then(() => {
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ myCollection: res });
+      });
+    });
+  };
+
+  removeFromCollection = (contentItem) => {
+    const uid = this.props.user.uid;
+    data.deleteFromCollection(uid, contentItem).then(() => {
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ myCollection: res });
       });
     });
   };
@@ -62,12 +59,31 @@ export class HomePage extends Component {
   render() {
     const { popular, comics, movies, series } = this.state;
     const { user } = this.props;
-    const myCollection = user.collection;
+    const myCollection = user.collection || [];
     const inCollection = (item) => {
       const filteredArr = myCollection.filter((i) => i.id === item.id);
-
-      return filteredArr.length > 0 ? true : false;
+      const inCollection = filteredArr.length > 0 ? true : false;
+      return inCollection;
     };
+
+    // attempt to fix repeat declarations
+    // const contentArr = [popular, comics, movies, series];
+    // const rowArray = [popularRow, comicsRow, moviesRow, seriesRow];
+    // for (let i=0; i<rowArray.length; i++) {
+    //   let rowArray[i] = contentArr[i].map((item) => {
+    //     return (
+    //       <CardTileComponent
+    //         contentItem={item}
+    //         key={item.id}
+    //         image={item.image_src}
+    //         name={item.name}
+    //         inCollection={inCollection(item)}
+    //         addToCollection={this.addToCollection}
+    //         removeFromCollection={this.removeFromCollection}
+    //       />
+    //     );
+    //   })
+    // }
 
     // Row logic
     const popularRow = popular.map((item) => {
@@ -77,9 +93,9 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          inCollection={inCollection}
-          refreshState={this.refreshState}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -90,9 +106,9 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          inCollection={inCollection}
-          refreshState={this.refreshState}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -103,9 +119,9 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          inCollection={inCollection}
-          refreshState={this.refreshState}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -116,9 +132,9 @@ export class HomePage extends Component {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          inCollection={inCollection}
-          refreshState={this.refreshState}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });

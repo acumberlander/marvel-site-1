@@ -1,3 +1,8 @@
+#searchResults {
+  overflow: hidden;
+  overflow-y: scroll;
+  z-index: 1000px;
+}
 @media (max-width: 499px) {
   .my-navbar-container {
     display: flex;
