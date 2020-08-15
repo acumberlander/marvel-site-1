@@ -4,6 +4,7 @@ import { ProfilePage } from "./../../Components/ProfilePage/ProfilePage";
 
 const routes = [
   {
+    key: 1,
     path: "/",
     exact: true,
     authed: false,
@@ -11,18 +12,21 @@ const routes = [
     user: {},
   },
   {
+    key: 2,
     path: "/home",
     authed: false,
     component: HomePage,
     user: {},
   },
   {
+    key: 3,
     path: "/details/:id",
     authed: false,
     component: DetailsPage,
     user: {},
   },
   {
+    key: 4,
     path: "/profile",
     authed: false,
     component: ProfilePage,

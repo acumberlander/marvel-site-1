@@ -1,17 +1,16 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import "./CardTileComponent.scss";
 import { Link } from "react-router-dom";
 import contentShape from "../../Helpers/PropShapes/contentShape";
-import data from "../../Helpers/Data/Requests/collectionRequest";
 
 export class CardTileComponent extends PureComponent {
   static propTypes = {
     contentItem: contentShape,
-    myCollection: [],
+    // myCollection: [],
   };
 
   // componentDidMount() {
-  //   data.getAllCollectionItemsByUid
+  //   data.getUserCollectionItemsByUid()
   // }
 
   addToCollection = (e) => {
@@ -41,10 +40,9 @@ export class CardTileComponent extends PureComponent {
   };
 
   render() {
-    const { contentItem, image, name } = this.props;
+    const { contentItem, image, name, inCollection } = this.props;
     const contentDetails = `/details/${contentItem.id}`;
-    // myCollection.contains(`${contentItem.id}`);
-    if (!this.inCollection) {
+    if (!inCollection) {
       return (
         <>
           <div className="card-tile">
@@ -58,7 +56,7 @@ export class CardTileComponent extends PureComponent {
               </div>
               <span className="add-text">Add to Collection</span>
             </span>
-            <Link to={contentDetails} onClick={this.refreshState}>
+            <Link to={contentDetails}>
               <img src={image} alt={name} />
             </Link>
           </div>
@@ -67,14 +65,14 @@ export class CardTileComponent extends PureComponent {
     } else {
       return (
         <>
-          <div className="card-tile">
+          <div id={contentItem.id} className="card-tile">
             <span className="card-caption-div">
               <div onClick={this.removeFromCollection} className="add-icon-div">
                 <i className="material-icons add-icon">delete</i>
               </div>
               <span className="add-text">Remove from Collection</span>
             </span>
-            <Link to={contentDetails} onClick={this.refreshState}>
+            <Link to={contentDetails}>
               <img src={image} alt={name} />
             </Link>
           </div>

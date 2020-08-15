@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
@@ -19,6 +19,16 @@ export class DetailsPage extends PureComponent {
     inCollection: false,
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      const contentId = this.props.props.match.params.id;
+      const myCollection = this.props.user.collection;
+      data.getContentById(contentId).then((res) => {
+        this.setState({ contentItem: res, myCollection: myCollection });
+      });
+    }
+  }
+
   componentDidMount() {
     data.getCollection().then((res) => {
       this.setState({
@@ -28,31 +38,12 @@ export class DetailsPage extends PureComponent {
         series: res.Series,
       });
     });
-  }
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props !== prevProps) {
-  //     const contentId = this.props.match.params.id;
-  //     data.getContentById(contentId).then((res) => {
-  //       this.setState({ contentItem: res });
-  //     });
-  //   }
-  // }
-
-  refreshState = (item) => {
-    const contentId = item.id;
+    const contentId = this.props.props.match.params.id;
     data.getContentById(contentId).then((res) => {
       this.setState({ contentItem: res });
     });
-  };
-
-  //alternative option to change views/routing
-  //  changeView = (item) => {
-  //    const view = item.id;
-  //    let location = this.props.location;
-  //    location.pathname = `/details/${view}`;
-  //    this.props.history.push(location);
-  //  };
+  }
 
   addToCollection = (cItem) => {
     const { contentItem } = this.state;
@@ -62,7 +53,6 @@ export class DetailsPage extends PureComponent {
       const addedItem = res;
       data.addCollectionItem(uid, addedItem).then(() => {
         data.getAllCollectionItemsByUid(uid).then((res) => {
-          console.log(res);
           this.setState({ myCollection: res });
         });
       });
@@ -79,12 +69,14 @@ export class DetailsPage extends PureComponent {
 
   render() {
     const { contentItem } = this.state;
-    const contentId = this.props.match.params.id;
-    data.getContentById(contentId).then((res) => {
-      this.setState({ contentItem: res });
-    });
-
     const { popular, movies, comics, series } = this.state;
+    const { user } = this.props;
+    const myCollection = user.collection || [];
+    const inCollection = (item) => {
+      const filteredArr = myCollection.filter((i) => i.id === item.id);
+      const inCollection = filteredArr.length > 0 ? true : false;
+      return inCollection;
+    };
     const popularRow = popular.map((item) => {
       return (
         <CardTileComponent
@@ -92,7 +84,7 @@ export class DetailsPage extends PureComponent {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          refreshState={this.refreshState}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
         />
       );
@@ -104,6 +96,7 @@ export class DetailsPage extends PureComponent {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
         />
       );
@@ -115,6 +108,7 @@ export class DetailsPage extends PureComponent {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
         />
       );
@@ -126,16 +120,20 @@ export class DetailsPage extends PureComponent {
           key={item.id}
           image={item.image_src}
           name={item.name}
+          inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
         />
       );
     });
-    // const makeButton = (inCollection) => {
-    //   // const uid = authRequests.getCurrentUid();
-    //   data.getAllCollectionItemsByUid(uid).then((myCollection) => {
-    //     console.log(myCollection);
-    //   });
-    // };
+    const makeButton = (inCollection) => {
+      const uid = this.props.user.uid;
+      data.getUserCollectionItemsByUid(uid).then((myCollection) => {
+        // console.log(myCollection);
+      });
+    };
+    if (contentItem === {}) {
+      return <h1 className="mt-5">Loading...</h1>;
+    }
     return (
       <div className="detail-page-container">
         <div className="top-area">
@@ -151,7 +149,7 @@ export class DetailsPage extends PureComponent {
               <span>Date: {contentItem.date}</span>
               <span>Type: {contentItem.type}</span>
             </div>
-            {/* {makeButton()} */}
+            {makeButton()}
             <button
               onClick={this.addToCollection}
               type="button"
