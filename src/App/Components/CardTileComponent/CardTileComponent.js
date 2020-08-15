@@ -6,19 +6,17 @@ import contentShape from "../../Helpers/PropShapes/contentShape";
 export class CardTileComponent extends PureComponent {
   static propTypes = {
     contentItem: contentShape,
-    // myCollection: [],
   };
 
-  // componentDidMount() {
-  //   data.getUserCollectionItemsByUid()
-  // }
-
-  addToCollection = (e) => {
-    e.preventDefault();
-    const { addToCollection, contentItem } = this.props;
-
-    addToCollection(contentItem);
+  state = {
+    inCollection: false,
   };
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({ inCollection: this.props.inCollection });
+    }
+  }
 
   inCollection = (e) => {
     e.preventDefault();
@@ -33,14 +31,24 @@ export class CardTileComponent extends PureComponent {
     changeView(contentItem);
   };
 
+  addToCollection = (e) => {
+    e.preventDefault();
+    this.setState({ inCollection: true });
+    const { addToCollection, contentItem } = this.props;
+
+    addToCollection(contentItem);
+  };
+
   removeFromCollection = () => {
+    this.setState({ inCollection: false });
     const { removeFromCollection, contentItem } = this.props;
 
     removeFromCollection(contentItem);
   };
 
   render() {
-    const { contentItem, image, name, inCollection } = this.props;
+    const { contentItem, image, name } = this.props;
+    const { inCollection } = this.state;
     const contentDetails = `/details/${contentItem.id}`;
     if (!inCollection) {
       return (

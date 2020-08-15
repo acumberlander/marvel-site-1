@@ -7,6 +7,7 @@ export class ProfilePage extends PureComponent {
   state = {
     user: this.props.user,
     myCollection: this.props.user.collection,
+    inCollection: this.props.inCollection,
   };
 
   componentDidMount() {}
@@ -29,6 +30,7 @@ export class ProfilePage extends PureComponent {
 
   render() {
     const { user } = this.state;
+    const { inCollection } = this.props;
     const collection = user.collection;
 
     const myCollection = collection ? (
@@ -38,7 +40,7 @@ export class ProfilePage extends PureComponent {
           key={item.id}
           image={item.image_src}
           name={item.name}
-          inCollection={true}
+          inCollection={inCollection}
           removeFromCollection={this.removeFromCollection}
         />
       ))

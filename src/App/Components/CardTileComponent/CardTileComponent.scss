@@ -6,6 +6,14 @@
   height: 365px;
   margin: 10px;
 
+  .active {
+    display: block;
+  }
+
+  .inactive {
+    display: none;
+  }
+
   img {
     width: 250px;
     height: 365px;
