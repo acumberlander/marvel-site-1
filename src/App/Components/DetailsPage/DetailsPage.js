@@ -14,8 +14,8 @@ export class DetailsPage extends PureComponent {
       comics: [],
       series: [],
       collection: [],
-      user: this.props.user,
-      myCollection: this.props.user.collection,
+      user: this.props.user || [],
+      myCollection: this.props.user.collection || [],
       isInCollection: false,
     };
   }
@@ -23,16 +23,15 @@ export class DetailsPage extends PureComponent {
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       const contentId = this.props.props.match.params.id;
-      const myCollection = this.props.user.collection;
       data.getContentById(contentId).then((res) => {
-        console.log(res);
-        this.setState({ contentItem: res, myCollection: myCollection });
-        // this.isInCollectionCheck(res);
+        this.setState({ contentItem: res });
+        this.isInCollectionCheck(res);
       });
     }
   }
 
   componentDidMount() {
+    // console.log(this.props.user);
     data.getCollection().then((res) => {
       this.setState({
         popular: res.Popular,
@@ -45,31 +44,34 @@ export class DetailsPage extends PureComponent {
     const contentId = this.props.props.match.params.id;
     data.getContentById(contentId).then((res) => {
       this.setState({ contentItem: res });
-      // this.isInCollectionCheck(res);
+      this.isInCollectionCheck(res);
     });
   }
 
-  // isInCollectionCheck = (contentItem) => {
-  //   // debugger;
-  //   const { user } = this.props.user;
-  //   const myCollection = user.collection;
-  //   // if (myCollection === undefined) return <h1>Loading...</h1>;
-  //   const filteredArr = myCollection.filter((i) => i.id === contentItem.id);
-  //   const isInCollection = filteredArr.length > 0 ? true : false;
+  isInCollectionCheck = (contentItem) => {
+    const { user } = this.props;
+    const uid = user.uid;
+    const myCollection = user.collection || [];
+    const filteredArr = myCollection.filter((i) => i.id === contentItem.id);
+    const isInCollection = filteredArr.length > 0 ? true : false;
+    data.getUserCollectionItemsByUid(uid).then((res) => {
+      console.log(res);
+      this.setState({ isInCollection, myCollection: res });
+    });
 
-  //   this.setState({ isInCollection });
-  //   return isInCollection;
-  // };
+    return isInCollection;
+  };
 
   addToCollection = (cItem) => {
     const { contentItem } = this.state;
     const uid = this.props.user.uid;
     cItem = contentItem;
+
     data.getContentById(cItem.id).then((res) => {
       const addedItem = res;
       data.addCollectionItem(uid, addedItem).then(() => {
         data.getUserCollectionItemsByUid(uid).then((res) => {
-          this.setState({ myCollection: res });
+          this.setState({ myCollection: res, isInCollection: true });
         });
       });
     });
@@ -82,7 +84,7 @@ export class DetailsPage extends PureComponent {
 
     data.deleteFromCollection(uid, itemObject);
     data.getUserCollectionItemsByUid(uid).then((res) => {
-      this.setState({ mycollection: res });
+      this.setState({ mycollection: res, isInCollection: false });
     });
   };
 
@@ -95,9 +97,8 @@ export class DetailsPage extends PureComponent {
       comics,
       series,
     } = this.state;
-    const { user } = this.props;
-    const myCollection = user.collection || [];
     const inCollection = (item) => {
+      const myCollection = this.props.user.collection || [];
       const filteredArr = myCollection.filter((i) => i.id === item.id);
       const inCollection = filteredArr.length > 0 ? true : false;
       return inCollection;
@@ -111,6 +112,7 @@ export class DetailsPage extends PureComponent {
           name={item.name}
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -123,6 +125,7 @@ export class DetailsPage extends PureComponent {
           name={item.name}
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -135,6 +138,7 @@ export class DetailsPage extends PureComponent {
           name={item.name}
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -147,6 +151,7 @@ export class DetailsPage extends PureComponent {
           name={item.name}
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
+          removeFromCollection={this.removeFromCollection}
         />
       );
     });
@@ -215,7 +220,9 @@ export class DetailsPage extends PureComponent {
         </div>
         <div className="row-container">
           <h2 className="header">Popular</h2>
-          <section className="slider-row">{popularRow}</section>
+          <section className="slider-row">
+            {this.state.myCollection && popularRow}
+          </section>
           <h2 className="header">Comics</h2>
           <section className="slider-row">{comicsRow}</section>
           <h2 className="header">Movies</h2>

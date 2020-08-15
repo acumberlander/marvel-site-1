@@ -48,6 +48,7 @@ export class HomePage extends PureComponent {
   };
 
   removeFromCollection = (contentItem) => {
+    // this.setState({})
     const uid = this.props.user.uid;
     data.deleteFromCollection(uid, contentItem).then(() => {
       data.getUserCollectionItemsByUid(uid).then((res) => {
@@ -63,6 +64,7 @@ export class HomePage extends PureComponent {
     const inCollection = (item) => {
       const filteredArr = myCollection.filter((i) => i.id === item.id);
       const inCollection = filteredArr.length > 0 ? true : false;
+      this.setState({ inCollection: inCollection });
       return inCollection;
     };
 
