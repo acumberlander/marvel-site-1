@@ -1,23 +1,15 @@
-import React, { Component, PureComponent } from "react";
+import React, { PureComponent } from "react";
 import "./ProfilePage.scss";
-import authRequests from "../../Helpers/Data/Requests/authRequests";
-import userRequests from "../../Helpers/Data/Requests/userRequests";
-import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
+import data from "../../Helpers/Data/Requests/collectionRequest";
 import CardTileComponent from "../CardTileComponent/CardTileComponent";
 
 export class ProfilePage extends PureComponent {
   state = {
-    user: {},
+    user: this.props.user,
+    myCollection: this.props.user.collection,
   };
 
-  componentDidMount() {
-    // const collection = this.props.user.collection;
-    // this.setState({ collection });
-    // userRequests.getUserByUid(uid).then((user) => {
-    //   let collection = user.collection;
-    //   this.setState({ user: user, collection: collection });
-    // });
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
@@ -26,16 +18,11 @@ export class ProfilePage extends PureComponent {
     }
   }
 
-  refreshState = (item) => {
-    const contentItem = item;
-    this.setState({ contentItem: contentItem });
-  };
-
-  removeFromCollection = (itemObject) => {
+  removeFromCollection = (contentItem) => {
     const uid = this.props.user.uid;
-    collectionRequest.deleteFromCollection(uid, itemObject).then(() => {
-      userRequests.getUserByUid(uid).then((user) => {
-        this.setState({ user: user });
+    data.deleteFromCollection(uid, contentItem).then(() => {
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ myCollection: res });
       });
     });
   };
@@ -52,7 +39,6 @@ export class ProfilePage extends PureComponent {
           image={item.image_src}
           name={item.name}
           inCollection={true}
-          refreshState={this.refreshState}
           removeFromCollection={this.removeFromCollection}
         />
       ))
@@ -65,8 +51,8 @@ export class ProfilePage extends PureComponent {
           <div className="profile-image-and-name">
             <div className="image-div">
               <img
-                src="https://s3-us-east-2.amazonaws.com/redefined/wp-content/uploads/2019/11/12161154/sonic_paramount.jpg"
-                alt="Sonic Profile Pic"
+                src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/06/Miles-Morales-Spider-Man.jpg"
+                alt="Miles Profile Pic"
                 className="profile-pic"
               ></img>
             </div>

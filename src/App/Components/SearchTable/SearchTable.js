@@ -11,18 +11,22 @@ export default class SearchTable extends PureComponent {
   };
 
   render() {
-    const { collection } = this.props;
+    const { collection, propData } = this.props;
 
     const searchContentItemComponents = collection.map((contentItem) => (
-      <SearchContentItem contentItem={contentItem} key={contentItem.id} />
+      <SearchContentItem
+        propData={propData}
+        contentItem={contentItem}
+        key={contentItem.id}
+      />
     ));
 
     return (
-      <Table className="searchTable">
+      <Table hover className="searchTable">
         <thead className="tableHeader">
           <tr>
+            <th>Content Cover</th>
             <th>Name</th>
-            <th>Type</th>
             <th>Description</th>
           </tr>
         </thead>

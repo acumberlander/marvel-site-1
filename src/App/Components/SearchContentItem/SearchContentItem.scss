@@ -1,0 +1,30 @@
+.search-table-item {
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid white;
+  td {
+    padding: 50px;
+    height: 50px;
+  }
+}
+
+.search-image {
+  height: 9vh;
+  width: 6vh;
+  // margin-top: 15px;
+}
+
+.search-name-header {
+  min-width: 350px;
+  font-weight: bold;
+}
+
+.image-div {
+  min-width: 250px;
+}
+
+.description-div {
+  max-width: 500px;
+}
