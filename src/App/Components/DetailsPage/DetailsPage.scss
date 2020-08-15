@@ -66,6 +66,14 @@
     }
   }
 
+  .active {
+    display: block;
+  }
+
+  .inactive {
+    display: none;
+  }
+
   .row-container {
     text-align: left;
     margin-top: 40px;

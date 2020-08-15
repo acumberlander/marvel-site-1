@@ -15,7 +15,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import SearchTable from "../SearchTable/SearchTable";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 import SearchField from "react-search-field";
-import { Button, Collapse, Navbar, NavbarBrand } from "reactstrap";
+import { Button } from "reactstrap";
 
 class MyNavbar extends PureComponent {
   static propTypes = {
@@ -67,11 +67,14 @@ class MyNavbar extends PureComponent {
   // Search Results
   buildSearchResults = () => {
     const { filteredContent } = this.state;
-    // if (filteredContent.length > 0) {
     return (
-      <div id="searchResults">
-        <div className="searchResultsCard">
-          <SearchTable collection={filteredContent} />
+      <div id="search-results">
+        <div
+          className={`${
+            filteredContent.length > 0 ? "active" : "inactive"
+          } search-result-card`}
+        >
+          <SearchTable propData={this.props} collection={filteredContent} />
         </div>
       </div>
     );
@@ -126,8 +129,8 @@ class MyNavbar extends PureComponent {
               />
             </div>
             <img
-              src="https://s3-us-east-2.amazonaws.com/redefined/wp-content/uploads/2019/11/12161154/sonic_paramount.jpg"
-              alt="Sonic Profile Pic"
+              src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/06/Miles-Morales-Spider-Man.jpg"
+              alt="Miles Profile Pic"
               className="profile-pic"
               onClick={this.toggleDrawer}
             ></img>
@@ -140,12 +143,12 @@ class MyNavbar extends PureComponent {
             >
               <div className="drawer-profile-section">
                 <img
-                  src="https://s3-us-east-2.amazonaws.com/redefined/wp-content/uploads/2019/11/12161154/sonic_paramount.jpg"
-                  alt="Sonic Profile Pic"
+                  src="https://static3.srcdn.com/wordpress/wp-content/uploads/2020/06/Miles-Morales-Spider-Man.jpg"
+                  alt="Miles Profile Pic"
                   className="drawer-profile-pic"
                 ></img>
                 <h2>{userObject.fullName}</h2>
-                <h4>Green Hills</h4>
+                <h4>New York City</h4>
               </div>
               <Divider />
               <List>
@@ -252,18 +255,8 @@ class MyNavbar extends PureComponent {
     };
     return (
       <div className="my-navbar-container">
-        <Navbar className="the-navbar" light expand="md">
-          <NavbarBrand
-            href="/"
-            style={{ color: "white", textDecoration: "none" }}
-          >
-            YoComics
-          </NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            {buildNavbar()}
-          </Collapse>
-        </Navbar>
-        {this.buildSearchResults()}
+        <div className="nav-search">{buildNavbar()}</div>
+        <div className="search-table">{this.buildSearchResults()}</div>
       </div>
     );
   }

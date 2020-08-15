@@ -3,28 +3,31 @@ import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
 import data from "../../Helpers/Data/Requests/collectionRequest";
-import collectionRequest from "../../Helpers/Data/Requests/collectionRequest";
-import authRequests from "../../Helpers/Data/Requests/authRequests";
-import userRequests from "../../Helpers/Data/Requests/userRequests";
 
 export class DetailsPage extends PureComponent {
-  state = {
-    contentItem: contentShape,
-    popular: [],
-    movies: [],
-    comics: [],
-    series: [],
-    collection: [],
-    myCollection: [],
-    inCollection: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      contentItem: contentShape,
+      popular: [],
+      movies: [],
+      comics: [],
+      series: [],
+      collection: [],
+      user: this.props.user,
+      myCollection: this.props.user.collection,
+      isInCollection: false,
+    };
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       const contentId = this.props.props.match.params.id;
       const myCollection = this.props.user.collection;
       data.getContentById(contentId).then((res) => {
+        console.log(res);
         this.setState({ contentItem: res, myCollection: myCollection });
+        // this.isInCollectionCheck(res);
       });
     }
   }
@@ -42,34 +45,56 @@ export class DetailsPage extends PureComponent {
     const contentId = this.props.props.match.params.id;
     data.getContentById(contentId).then((res) => {
       this.setState({ contentItem: res });
+      // this.isInCollectionCheck(res);
     });
   }
 
+  // isInCollectionCheck = (contentItem) => {
+  //   // debugger;
+  //   const { user } = this.props.user;
+  //   const myCollection = user.collection;
+  //   // if (myCollection === undefined) return <h1>Loading...</h1>;
+  //   const filteredArr = myCollection.filter((i) => i.id === contentItem.id);
+  //   const isInCollection = filteredArr.length > 0 ? true : false;
+
+  //   this.setState({ isInCollection });
+  //   return isInCollection;
+  // };
+
   addToCollection = (cItem) => {
     const { contentItem } = this.state;
-    cItem = contentItem;
     const uid = this.props.user.uid;
+    cItem = contentItem;
     data.getContentById(cItem.id).then((res) => {
       const addedItem = res;
       data.addCollectionItem(uid, addedItem).then(() => {
-        data.getAllCollectionItemsByUid(uid).then((res) => {
+        data.getUserCollectionItemsByUid(uid).then((res) => {
           this.setState({ myCollection: res });
         });
       });
     });
   };
 
-  // removeFromCollection = () => {
-  //   const { contentItem } = this.state;
-  //   // const uid = authRequests.getCurrentUid();
-  //   let itemObject = contentItem;
+  removeFromCollection = () => {
+    const { contentItem } = this.state;
+    const uid = this.props.user.uid;
+    let itemObject = contentItem;
 
-  //   collectionRequest.deleteFromCollection(uid, itemObject);
-  // };
+    data.deleteFromCollection(uid, itemObject);
+    data.getUserCollectionItemsByUid(uid).then((res) => {
+      this.setState({ mycollection: res });
+    });
+  };
 
   render() {
-    const { contentItem } = this.state;
-    const { popular, movies, comics, series } = this.state;
+    const {
+      contentItem,
+      isInCollection,
+      popular,
+      movies,
+      comics,
+      series,
+    } = this.state;
     const { user } = this.props;
     const myCollection = user.collection || [];
     const inCollection = (item) => {
@@ -125,15 +150,30 @@ export class DetailsPage extends PureComponent {
         />
       );
     });
-    const makeButton = (inCollection) => {
-      const uid = this.props.user.uid;
-      data.getUserCollectionItemsByUid(uid).then((myCollection) => {
-        // console.log(myCollection);
-      });
+    const addOrRemoveButton = () => {
+      return (
+        <>
+          <button
+            onClick={this.addToCollection}
+            type="button"
+            className={`${
+              isInCollection ? "inactive" : "active"
+            } add-to-list-btn btn btn-primary`}
+          >
+            Add to Collection
+          </button>
+          <button
+            onClick={this.removeFromCollection}
+            type="button"
+            className={`${
+              isInCollection ? "active" : "inactive"
+            } remove-from-list-btn btn btn-danger`}
+          >
+            Remove from Collection
+          </button>
+        </>
+      );
     };
-    if (contentItem === {}) {
-      return <h1 className="mt-5">Loading...</h1>;
-    }
     return (
       <div className="detail-page-container">
         <div className="top-area">
@@ -149,21 +189,7 @@ export class DetailsPage extends PureComponent {
               <span>Date: {contentItem.date}</span>
               <span>Type: {contentItem.type}</span>
             </div>
-            {makeButton()}
-            <button
-              onClick={this.addToCollection}
-              type="button"
-              className="add-to-list-btn btn btn-primary"
-            >
-              Add to Collection
-            </button>
-            <button
-              onClick={this.removeFromCollection}
-              type="button"
-              className="remove-from-list-btn btn btn-danger"
-            >
-              Remove from Collection
-            </button>
+            {addOrRemoveButton()}
           </div>
           <div id="second-column">
             <div className="video-header-div">

@@ -18,6 +18,7 @@ const getCollection = () =>
 
 const getContentById = (id) =>
   getCollection().then((res) => {
+    // debugger;
     let comics = res.Comics;
     let movies = res.Movies;
     let popular = res.Popular;
