@@ -9,7 +9,7 @@ export class CardTileComponent extends PureComponent {
   };
 
   state = {
-    inCollection: false,
+    inCollection: this.props.inCollection,
   };
 
   componentDidUpdate(prevProps) {
@@ -17,6 +17,10 @@ export class CardTileComponent extends PureComponent {
       this.setState({ inCollection: this.props.inCollection });
     }
   }
+
+  //  componentDidMount() {
+  //    this.setState({ inCollection: this.props.inCollection });
+  //  }
 
   inCollection = (e) => {
     e.preventDefault();
@@ -39,7 +43,8 @@ export class CardTileComponent extends PureComponent {
     addToCollection(contentItem);
   };
 
-  removeFromCollection = () => {
+  removeFromCollection = (e) => {
+    e.preventDefault();
     this.setState({ inCollection: false });
     const { removeFromCollection, contentItem } = this.props;
 

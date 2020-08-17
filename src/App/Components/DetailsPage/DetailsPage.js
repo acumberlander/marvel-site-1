@@ -17,6 +17,7 @@ export class DetailsPage extends PureComponent {
       user: this.props.user || [],
       myCollection: this.props.user.collection || [],
       isInCollection: false,
+      inCollection: false,
     };
   }
 
@@ -31,9 +32,14 @@ export class DetailsPage extends PureComponent {
   }
 
   componentDidMount() {
-    // console.log(this.props.user);
     data.getCollection().then((res) => {
       this.setState({
+        collection: [
+          ...res.Popular,
+          ...res.Movies,
+          ...res.Comics,
+          ...res.Series,
+        ],
         popular: res.Popular,
         movies: res.Movies,
         comics: res.Comics,
@@ -44,7 +50,6 @@ export class DetailsPage extends PureComponent {
     const contentId = this.props.props.match.params.id;
     data.getContentById(contentId).then((res) => {
       this.setState({ contentItem: res });
-      this.isInCollectionCheck(res);
     });
   }
 
@@ -55,7 +60,6 @@ export class DetailsPage extends PureComponent {
     const filteredArr = myCollection.filter((i) => i.id === contentItem.id);
     const isInCollection = filteredArr.length > 0 ? true : false;
     data.getUserCollectionItemsByUid(uid).then((res) => {
-      console.log(res);
       this.setState({ isInCollection, myCollection: res });
     });
 
