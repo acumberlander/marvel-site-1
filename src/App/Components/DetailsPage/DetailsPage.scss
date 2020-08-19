@@ -8,6 +8,17 @@
     color: red;
   }
 
+  .header-display-container {
+    // display: flex;
+    // flex-direction: row;
+    // align-items: center;
+    // color: green;
+    .checkmark {
+      color: green;
+      font-size: 30px;
+    }
+  }
+
   .top-area {
     width: 100%;
     display: flex;
@@ -26,7 +37,7 @@
       .misc-details {
         display: flex;
         flex-direction: column;
-        text-align: left;
+        text-align: center;
         width: 20vw;
       }
 
@@ -66,8 +77,38 @@
     }
   }
 
+  .misc-details {
+    font-weight: bold;
+  }
+
+  .in-collection {
+    color: green;
+    font-weight: bold;
+    .checkmark {
+      color: green;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+  }
+  .not-in-collection {
+    color: red;
+    font-weight: bold;
+    .cancel {
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+  }
+
   .active {
-    display: block;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    p {
+      margin: 0 10px 0;
+    }
   }
 
   .inactive {

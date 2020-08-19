@@ -18,10 +18,6 @@ export class CardTileComponent extends PureComponent {
     }
   }
 
-  //  componentDidMount() {
-  //    this.setState({ inCollection: this.props.inCollection });
-  //  }
-
   inCollection = (e) => {
     e.preventDefault();
     const { inCollection, item } = this.props;
