@@ -21,6 +21,7 @@ export class DetailsPage extends PureComponent {
     };
   }
 
+  // Lifecycles
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       const contentId = this.props.props.match.params.id;
@@ -56,6 +57,7 @@ export class DetailsPage extends PureComponent {
     this.isInCollectionCheck(contentItem);
   }
 
+  // Method for currently displayed item
   isInCollectionCheck = (contentItem) => {
     const { user } = this.props;
     const uid = user.uid;
@@ -64,7 +66,10 @@ export class DetailsPage extends PureComponent {
     const isInCollection = filteredArr.length > 0 ? true : false;
 
     data.getUserCollectionItemsByUid(uid).then((res) => {
-      this.setState({ isInCollection: isInCollection, myCollection: res });
+      this.setState({
+        isInCollection: isInCollection,
+        myCollection: res,
+      });
     });
   };
 
