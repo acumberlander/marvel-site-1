@@ -14,8 +14,8 @@ export class DetailsPage extends PureComponent {
       comics: [],
       series: [],
       collection: [],
-      user: this.props.user || [],
-      myCollection: this.props.user.collection || [],
+      user: this.props.user,
+      myCollection: this.props.user.collection,
       isInCollection: false,
       inCollection: false,
     };
@@ -24,8 +24,9 @@ export class DetailsPage extends PureComponent {
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       const contentId = this.props.props.match.params.id;
+      const myCollection = this.props.user.collection;
       data.getContentById(contentId).then((res) => {
-        this.setState({ contentItem: res });
+        this.setState({ contentItem: res, myCollection: myCollection });
         this.isInCollectionCheck(res);
       });
     }
@@ -48,9 +49,11 @@ export class DetailsPage extends PureComponent {
     });
 
     const contentId = this.props.props.match.params.id;
-    data.getContentById(contentId).then((res) => {
-      this.setState({ contentItem: res });
+    const { contentItem } = this.state;
+    data.getContentById(contentId).then((contentItem) => {
+      this.setState({ contentItem });
     });
+    this.isInCollectionCheck(contentItem);
   }
 
   isInCollectionCheck = (contentItem) => {
@@ -59,36 +62,29 @@ export class DetailsPage extends PureComponent {
     const myCollection = user.collection || [];
     const filteredArr = myCollection.filter((i) => i.id === contentItem.id);
     const isInCollection = filteredArr.length > 0 ? true : false;
-    data.getUserCollectionItemsByUid(uid).then((res) => {
-      this.setState({ isInCollection, myCollection: res });
-    });
 
-    return isInCollection;
+    data.getUserCollectionItemsByUid(uid).then((res) => {
+      this.setState({ isInCollection: isInCollection, myCollection: res });
+    });
   };
 
-  addToCollection = (cItem) => {
-    const { contentItem } = this.state;
+  // Add & Delete from User Collection
+  addToCollection = (contentItem) => {
     const uid = this.props.user.uid;
-    cItem = contentItem;
-
-    data.getContentById(cItem.id).then((res) => {
-      const addedItem = res;
-      data.addCollectionItem(uid, addedItem).then(() => {
-        data.getUserCollectionItemsByUid(uid).then((res) => {
-          this.setState({ myCollection: res, isInCollection: true });
-        });
+    data.addCollectionItem(uid, contentItem).then(() => {
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ myCollection: res, isInCollection: true });
       });
     });
   };
 
-  removeFromCollection = () => {
-    const { contentItem } = this.state;
+  removeFromCollection = (contentItem) => {
     const uid = this.props.user.uid;
-    let itemObject = contentItem;
-
-    data.deleteFromCollection(uid, itemObject);
-    data.getUserCollectionItemsByUid(uid).then((res) => {
-      this.setState({ mycollection: res, isInCollection: false });
+    this.isInCollectionCheck(this.state.contentItem);
+    data.deleteFromCollection(uid, contentItem).then(() => {
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ myCollection: res, isInCollection: false });
+      });
     });
   };
 
@@ -105,6 +101,7 @@ export class DetailsPage extends PureComponent {
       const myCollection = this.props.user.collection || [];
       const filteredArr = myCollection.filter((i) => i.id === item.id);
       const inCollection = filteredArr.length > 0 ? true : false;
+      this.setState({ inCollection: inCollection });
       return inCollection;
     };
     const popularRow = popular.map((item) => {
@@ -159,28 +156,26 @@ export class DetailsPage extends PureComponent {
         />
       );
     });
-    const addOrRemoveButton = () => {
+    const inCollectionDisplay = () => {
       return (
-        <>
-          <button
-            onClick={this.addToCollection}
-            type="button"
-            className={`${
-              isInCollection ? "inactive" : "active"
-            } add-to-list-btn btn btn-primary`}
-          >
-            Add to Collection
-          </button>
-          <button
-            onClick={this.removeFromCollection}
-            type="button"
+        <div class="header-display-container">
+          <div
             className={`${
               isInCollection ? "active" : "inactive"
-            } remove-from-list-btn btn btn-danger`}
+            } in-collection`}
           >
-            Remove from Collection
-          </button>
-        </>
+            <p>In Your Collection</p>
+            <span class="checkmark material-icons">done</span>
+          </div>
+          <div
+            className={`${
+              isInCollection ? "inactive" : "active"
+            } not-in-collection`}
+          >
+            <p>Not In Collection</p>
+            <span class="cancel material-icons">close</span>
+          </div>
+        </div>
       );
     };
     return (
@@ -198,7 +193,7 @@ export class DetailsPage extends PureComponent {
               <span>Date: {contentItem.date}</span>
               <span>Type: {contentItem.type}</span>
             </div>
-            {addOrRemoveButton()}
+            {inCollectionDisplay()}
           </div>
           <div id="second-column">
             <div className="video-header-div">
@@ -224,9 +219,7 @@ export class DetailsPage extends PureComponent {
         </div>
         <div className="row-container">
           <h2 className="header">Popular</h2>
-          <section className="slider-row">
-            {this.state.myCollection && popularRow}
-          </section>
+          <section className="slider-row">{popularRow}</section>
           <h2 className="header">Comics</h2>
           <section className="slider-row">{comicsRow}</section>
           <h2 className="header">Movies</h2>

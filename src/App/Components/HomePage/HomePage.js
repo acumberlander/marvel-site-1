@@ -10,9 +10,9 @@ export class HomePage extends PureComponent {
     movies: [],
     comics: [],
     series: [],
-    myCollection: [],
+    user: this.props.user,
+    myCollection: this.props.user.collection,
     inCollection: false,
-    user: {},
   };
 
   // Lifecycles
@@ -25,14 +25,19 @@ export class HomePage extends PureComponent {
         series: res.Series,
       });
     });
+
+    const uid = this.props.user.uid;
+    data.getUserCollectionItemsByUid(uid).then((res) => {
+      this.setState({ myCollection: res });
+    });
   }
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      const contentId = this.props.props.match.params.id;
-      const myCollection = this.props.user.collection;
-      data.getContentById(contentId).then((res) => {
-        this.setState({ contentItem: res, myCollection: myCollection });
+      const user = this.props.user;
+      const uid = this.props.user.uid;
+      data.getUserCollectionItemsByUid(uid).then((res) => {
+        this.setState({ user: user, myCollection: res });
       });
     }
   }
@@ -48,7 +53,6 @@ export class HomePage extends PureComponent {
   };
 
   removeFromCollection = (contentItem) => {
-    // this.setState({})
     const uid = this.props.user.uid;
     data.deleteFromCollection(uid, contentItem).then(() => {
       data.getUserCollectionItemsByUid(uid).then((res) => {
@@ -67,25 +71,6 @@ export class HomePage extends PureComponent {
       this.setState({ inCollection: inCollection });
       return inCollection;
     };
-
-    // attempt to fix repeat declarations
-    // const contentArr = [popular, comics, movies, series];
-    // const rowArray = [popularRow, comicsRow, moviesRow, seriesRow];
-    // for (let i=0; i<rowArray.length; i++) {
-    //   let rowArray[i] = contentArr[i].map((item) => {
-    //     return (
-    //       <CardTileComponent
-    //         contentItem={item}
-    //         key={item.id}
-    //         image={item.image_src}
-    //         name={item.name}
-    //         inCollection={inCollection(item)}
-    //         addToCollection={this.addToCollection}
-    //         removeFromCollection={this.removeFromCollection}
-    //       />
-    //     );
-    //   })
-    // }
 
     // Row logic
     const popularRow = popular.map((item) => {
@@ -204,6 +189,7 @@ export class HomePage extends PureComponent {
             </Carousel>
           </div>
           <div className="row-container">
+            {/* {renderAllRows(contentArr)} */}
             <h2 className="header">Popular</h2>
             <section className="slider-row">{popularRow}</section>
             <h2 className="header">Comics</h2>

@@ -1,7 +1,6 @@
 import React, { PureComponent } from "react";
 import "./SearchContentItem.scss";
 import contentShape from "./../../Helpers/PropShapes/contentShape";
-import { Link } from "react-router-dom";
 
 export default class SearchContentItem extends PureComponent {
   static propTypes = {
@@ -10,7 +9,6 @@ export default class SearchContentItem extends PureComponent {
 
   render() {
     const { contentItem } = this.props;
-    const contentDetails = `details/${contentItem.id}`;
 
     return (
       <tr className="search-table-item">

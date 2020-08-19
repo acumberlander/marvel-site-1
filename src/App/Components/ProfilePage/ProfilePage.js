@@ -2,46 +2,54 @@ import React, { PureComponent } from "react";
 import "./ProfilePage.scss";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 import CardTileComponent from "../CardTileComponent/CardTileComponent";
+import userRequests from "../../Helpers/Data/Requests/userRequests";
 
 export class ProfilePage extends PureComponent {
   state = {
     user: this.props.user,
     myCollection: this.props.user.collection,
-    inCollection: this.props.inCollection,
+    inCollection: true,
   };
 
-  componentDidMount() {}
+  componentDidMount() {
+    const uid = this.props.user.uid;
+    data.getUserCollectionItemsByUid(uid).then((res) => {
+      this.setState({ myCollection: res });
+    });
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      const user = this.props.user;
-      this.setState({ user });
+      const uid = this.props.user.uid;
+      userRequests.getUserByUid(uid).then((user) => {
+        data.getUserCollectionItemsByUid(uid).then((myCollection) => {
+          this.setState({ user, myCollection });
+        });
+      });
     }
   }
 
-  removeFromCollection = (contentItem) => {
-    const uid = this.props.user.uid;
-    data.deleteFromCollection(uid, contentItem).then(() => {
-      data.getUserCollectionItemsByUid(uid).then((res) => {
-        this.setState({ myCollection: res });
-      });
-    });
-  };
-
   render() {
-    const { user } = this.state;
-    const { inCollection } = this.props;
-    const collection = user.collection;
+    const { user, inCollection, myCollection } = this.state;
+    const removeFromCollection = (contentItem) => {
+      const uid = this.props.user.uid;
+      const newArray = myCollection.filter((item) => item !== contentItem);
+      data.deleteFromCollection(uid, contentItem).then(() => {
+        userRequests.getUserByUid(uid).then((user) => {
+          this.setState({ user: user, myCollection: newArray });
+        });
+      });
+    };
 
-    const myCollection = collection ? (
-      collection.map((item) => (
+    const displayedCollection = myCollection ? (
+      myCollection.map((item) => (
         <CardTileComponent
           contentItem={item}
           key={item.id}
           image={item.image_src}
           name={item.name}
           inCollection={inCollection}
-          removeFromCollection={this.removeFromCollection}
+          removeFromCollection={removeFromCollection}
         />
       ))
     ) : (
@@ -63,7 +71,7 @@ export class ProfilePage extends PureComponent {
           <hr></hr>
           <div className="collection-div">
             <h2>My Collection</h2>
-            <div className="item-container">{myCollection}</div>
+            <div className="item-container">{displayedCollection}</div>
           </div>
         </div>
       </>
