@@ -189,7 +189,6 @@ export class HomePage extends PureComponent {
             </Carousel>
           </div>
           <div className="row-container">
-            {/* {renderAllRows(contentArr)} */}
             <h2 className="header">Popular</h2>
             <section className="slider-row">{popularRow}</section>
             <h2 className="header">Comics</h2>
