@@ -10,6 +10,7 @@ export class CardTileComponent extends PureComponent {
 
   state = {
     inCollection: this.props.inCollection,
+    isSignedIn: this.props.isSignedIn,
   };
 
   componentDidUpdate(prevProps) {
@@ -48,23 +49,40 @@ export class CardTileComponent extends PureComponent {
   };
 
   render() {
-    const { contentItem, image, name } = this.props;
+    const { contentItem, image, name, isSignedIn } = this.props;
     const { inCollection } = this.state;
     const contentDetails = `/details/${contentItem.id}`;
+    const captionBuilder = () => {
+      if (isSignedIn && !inCollection) {
+        return (
+          <span className="card-caption-div">
+            <div
+              id={contentItem.id}
+              onClick={this.addToCollection}
+              className="add-icon-div"
+            >
+              <i className="material-icons add-icon">add_circle_outline</i>
+            </div>
+            <span className="add-text">Add to Collection</span>
+          </span>
+        );
+      }
+      if (isSignedIn && inCollection) {
+        return (
+          <span className="card-caption-div">
+            <div onClick={this.removeFromCollection} className="add-icon-div">
+              <i className="material-icons add-icon">delete</i>
+            </div>
+            <span className="add-text">Remove from Collection</span>
+          </span>
+        );
+      }
+    };
     if (!inCollection) {
       return (
         <>
           <div className="card-tile">
-            <span className="card-caption-div">
-              <div
-                id={contentItem.id}
-                onClick={this.addToCollection}
-                className="add-icon-div"
-              >
-                <i className="material-icons add-icon">add_circle_outline</i>
-              </div>
-              <span className="add-text">Add to Collection</span>
-            </span>
+            {captionBuilder()}
             <Link to={contentDetails}>
               <img src={image} alt={name} />
             </Link>
@@ -75,12 +93,7 @@ export class CardTileComponent extends PureComponent {
       return (
         <>
           <div id={contentItem.id} className="card-tile">
-            <span className="card-caption-div">
-              <div onClick={this.removeFromCollection} className="add-icon-div">
-                <i className="material-icons add-icon">delete</i>
-              </div>
-              <span className="add-text">Remove from Collection</span>
-            </span>
+            {captionBuilder()}
             <Link to={contentDetails}>
               <img src={image} alt={name} />
             </Link>

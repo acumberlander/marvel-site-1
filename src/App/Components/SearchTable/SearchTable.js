@@ -12,13 +12,19 @@ export default class SearchTable extends PureComponent {
 
   render() {
     const { collection, propData } = this.props;
+    const goToItem = (contentItem) => {
+      const contentDetails = `/details/${contentItem.id}`;
+      window.location.assign(contentDetails);
+    };
 
     const searchContentItemComponents = collection.map((contentItem) => (
-      <SearchContentItem
-        propData={propData}
-        contentItem={contentItem}
-        key={contentItem.id}
-      />
+      <div onClick={() => goToItem(contentItem)}>
+        <SearchContentItem
+          propData={propData}
+          contentItem={contentItem}
+          key={contentItem.id}
+        />
+      </div>
     ));
 
     return (

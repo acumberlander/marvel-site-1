@@ -18,6 +18,7 @@ export class DetailsPage extends PureComponent {
       myCollection: this.props.user.collection,
       isInCollection: false,
       inCollection: false,
+      isSignedIn: false,
     };
   }
 
@@ -26,6 +27,11 @@ export class DetailsPage extends PureComponent {
     if (this.props !== prevProps) {
       const contentId = this.props.props.match.params.id;
       const myCollection = this.props.user.collection;
+      if (this.props.user !== prevProps.user) {
+        this.setState({ isSignedIn: true });
+      } else {
+        this.setState({ isSignedIn: false });
+      }
       data.getContentById(contentId).then((res) => {
         this.setState({ contentItem: res, myCollection: myCollection });
         this.isInCollectionCheck(res);
@@ -101,6 +107,7 @@ export class DetailsPage extends PureComponent {
       movies,
       comics,
       series,
+      isSignedIn,
     } = this.state;
     const inCollection = (item) => {
       const myCollection = this.props.user.collection || [];
@@ -119,6 +126,7 @@ export class DetailsPage extends PureComponent {
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
           removeFromCollection={this.removeFromCollection}
+          isSignedIn={isSignedIn}
         />
       );
     });
@@ -132,6 +140,7 @@ export class DetailsPage extends PureComponent {
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
           removeFromCollection={this.removeFromCollection}
+          isSignedIn={isSignedIn}
         />
       );
     });
@@ -145,6 +154,7 @@ export class DetailsPage extends PureComponent {
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
           removeFromCollection={this.removeFromCollection}
+          isSignedIn={isSignedIn}
         />
       );
     });
@@ -158,6 +168,7 @@ export class DetailsPage extends PureComponent {
           inCollection={inCollection(item)}
           addToCollection={this.addToCollection}
           removeFromCollection={this.removeFromCollection}
+          isSignedIn={isSignedIn}
         />
       );
     });

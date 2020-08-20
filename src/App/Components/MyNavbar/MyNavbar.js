@@ -29,6 +29,7 @@ class MyNavbar extends PureComponent {
     loggingIn: false,
     filteredContent: [],
     collection: [],
+    fieldValue: "",
   };
 
   // Data call
@@ -106,6 +107,10 @@ class MyNavbar extends PureComponent {
     }
   };
 
+  onBlur = (e) => {
+    this.setState({ fieldValue: e });
+  };
+
   render() {
     // Navbar UI builder
     const buildNavbar = () => {
@@ -125,6 +130,7 @@ class MyNavbar extends PureComponent {
                 type="search"
                 className="search-bar"
                 onChange={this.onChange}
+                onBlur={this.onBlur}
                 placeholder="Search YoComics"
               />
             </div>
