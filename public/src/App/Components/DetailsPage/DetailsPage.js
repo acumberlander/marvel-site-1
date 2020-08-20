@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import "./DetailsPage.scss";
 import CardTileComponent from "../CardTileComponent/CardTileComponent.js";
-import contentShape from "./../../Helpers/PropShapes/contentShape";
+import contentShape from "../../Helpers/PropShapes/contentShape";
 import data from "../../Helpers/Data/Requests/collectionRequest";
 
 export class DetailsPage extends PureComponent {

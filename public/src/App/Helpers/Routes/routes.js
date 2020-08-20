@@ -1,6 +1,6 @@
-import { HomePage } from "./../../Components/HomePage/HomePage";
-import { DetailsPage } from "./../../Components/DetailsPage/DetailsPage";
-import { ProfilePage } from "./../../Components/ProfilePage/ProfilePage";
+import { HomePage } from "../../Components/HomePage/HomePage";
+import { DetailsPage } from "../../Components/DetailsPage/DetailsPage";
+import { ProfilePage } from "../../Components/ProfilePage/ProfilePage";
 
 const routes = [
   {

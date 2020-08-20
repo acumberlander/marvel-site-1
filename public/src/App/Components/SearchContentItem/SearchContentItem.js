@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import "./SearchContentItem.scss";
-import contentShape from "./../../Helpers/PropShapes/contentShape";
+import contentShape from "../../Helpers/PropShapes/contentShape";
 
 export default class SearchContentItem extends PureComponent {
   static propTypes = {
