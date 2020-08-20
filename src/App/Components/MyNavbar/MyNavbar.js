@@ -208,7 +208,6 @@ class MyNavbar extends PureComponent {
                 variant="outlined"
                 color="primary"
                 onClick={this.showModal}
-                style={{ width: "100px" }}
               >
                 Log In
               </Button>

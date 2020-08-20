@@ -38,6 +38,7 @@
       justify-content: center;
       h2 {
         font-size: 18px;
+        margin: 0;
       }
     }
 
@@ -226,6 +227,7 @@
       justify-content: center;
       h2 {
         font-size: 22px;
+        margin: 0;
       }
     }
 
@@ -264,6 +266,9 @@
       justify-content: center;
       flex-direction: row;
       height: 5vh;
+      margin-top: 10px;
+      min-width: 300px;
+      align-items: center;
 
       .sell-button {
         display: flex;
@@ -296,7 +301,7 @@
           color: white;
         }
       }
-      .login-button {
+      .nav-login {
         display: none;
       }
       .chat-icon {
@@ -413,6 +418,7 @@
       justify-content: center;
       h2 {
         font-size: 28px;
+        margin: 0;
       }
     }
 
@@ -451,6 +457,9 @@
       justify-content: center;
       flex-direction: row;
       height: 5vh;
+      margin-top: 10px;
+      min-width: 500px;
+      align-items: center;
 
       .sell-button {
         display: flex;
@@ -483,7 +492,7 @@
           color: white;
         }
       }
-      .login-button {
+      .login-button-div {
         display: flex;
         justify-content: center;
         height: 35px;
@@ -493,6 +502,12 @@
         color: red;
         font-weight: bold;
         cursor: pointer;
+
+        .nav-login {
+          display: block;
+          width: 80px;
+          font-weight: bold;
+        }
 
         .MuiButton-label {
           min-width: 50px;
@@ -624,6 +639,7 @@
       justify-content: center;
       h2 {
         font-size: 30px;
+        margin: 0;
       }
     }
 
@@ -663,6 +679,9 @@
       justify-content: center;
       flex-direction: row;
       height: 5vh;
+      margin-top: 10px;
+      min-width: 800px;
+      align-items: center;
 
       .sell-button {
         display: flex;
@@ -695,7 +714,7 @@
           color: white;
         }
       }
-      .login-button {
+      .login-button-div {
         display: flex;
         justify-content: center;
         height: 35px;
@@ -705,6 +724,12 @@
         color: red;
         font-weight: bold;
         cursor: pointer;
+
+        .nav-login {
+          display: block;
+          width: 80px;
+          font-weight: bold;
+        }
 
         .MuiButton-label {
           min-width: 50px;
@@ -837,6 +862,7 @@
       justify-content: center;
       h2 {
         font-size: 32px;
+        margin: 0;
       }
     }
 
@@ -921,6 +947,8 @@
         cursor: pointer;
 
         .nav-login {
+          display: block;
+          width: 100px;
           font-weight: bold;
         }
         .MuiButton-label {
