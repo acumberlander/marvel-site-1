@@ -18,7 +18,7 @@ export default class SearchTable extends PureComponent {
     };
 
     const searchContentItemComponents = collection.map((contentItem) => (
-      <div onClick={() => goToItem(contentItem)}>
+      <div className="content-item" onClick={() => goToItem(contentItem)}>
         <SearchContentItem
           propData={propData}
           contentItem={contentItem}
