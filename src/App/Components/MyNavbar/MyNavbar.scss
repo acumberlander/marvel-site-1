@@ -872,6 +872,7 @@
 
     .nav-group {
       display: flex;
+      align-items: center;
       justify-content: center;
       flex-direction: row;
       height: 5vh;
@@ -909,7 +910,7 @@
           color: white;
         }
       }
-      .login-button {
+      .login-button-div {
         display: flex;
         justify-content: center;
         height: 35px;
@@ -917,9 +918,11 @@
         border-radius: 1rem;
         margin-left: 20px;
         color: red;
-        font-weight: bold;
         cursor: pointer;
 
+        .nav-login {
+          font-weight: bold;
+        }
         .MuiButton-label {
           min-width: 50px;
         }

@@ -25,7 +25,6 @@ class App extends PureComponent {
             (userObj) => userObj.uid === user.uid
           ).length;
           if (filteredUsers === 0) {
-            console.log(filteredUsers);
             const userInfo = {
               fullName: user.displayName,
               email: user.email,

@@ -202,11 +202,13 @@ class MyNavbar extends PureComponent {
                 placeholder="Search YoComics"
               />
             </div>
-            <div className="login-button">
+            <div className="login-button-div">
               <Button
+                className="nav-login"
                 variant="outlined"
-                color="secondary"
+                color="primary"
                 onClick={this.showModal}
+                style={{ width: "100px" }}
               >
                 Log In
               </Button>
