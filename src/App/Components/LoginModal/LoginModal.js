@@ -90,7 +90,7 @@ export default class LoginModal extends Component {
   };
 
   // This function authenticates the user but does not allow
-  // for data to be access at this time due to COVID-19 according to Facebook.
+  // for data to be access at this time due to COVID-19 - according to Facebook.
   facebookLogin = () => {
     authRequests.facebookAuthenticate();
     this.props.hideModal();
