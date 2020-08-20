@@ -161,10 +161,13 @@ export default class LoginModal extends Component {
         <div>
           <Modal
             className="the-modal"
+            open={this.props.modalOpen}
+            onClose={this.props.hideModal}
             BackdropComponent={Backdrop}
             BackdropProps={{
               timeout: 500,
             }}
+            style={{ width: "425px", height: "350px" }}
           >
             <ModalBody className="login-modal-body">
               <Slide in={this.props.modalOpen}>
@@ -245,7 +248,7 @@ export default class LoginModal extends Component {
             BackdropProps={{
               timeout: 500,
             }}
-            onen
+            style={{ width: "425px", height: "425px" }}
           >
             <ModalBody className="login-modal-body">
               <Slide in={this.props.modalOpen}>

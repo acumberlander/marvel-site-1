@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  width: 250px;
-  height: 365px;
+  width: 200px;
+  height: 315px;
   margin: 10px;
 
   .active {
@@ -15,8 +15,8 @@
   }
 
   img {
-    width: 250px;
-    height: 365px;
+    width: 200px;
+    height: 315px;
     position: relative;
   }
 
@@ -26,7 +26,7 @@
     position: absolute;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.548);
-    width: 225px;
+    width: 175px;
     height: 50px;
     align-items: center;
     border-radius: 0 2rem 0 0;
@@ -41,6 +41,55 @@
       color: red;
       margin: 2px;
       cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 1920px) {
+  .card-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 250px;
+    height: 365px;
+    margin: 10px;
+
+    .active {
+      display: block;
+    }
+
+    .inactive {
+      display: none;
+    }
+
+    img {
+      width: 250px;
+      height: 365px;
+      position: relative;
+    }
+
+    .card-caption-div {
+      display: flex;
+      justify-content: flex-start;
+      position: absolute;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.548);
+      width: 225px;
+      height: 50px;
+      align-items: center;
+      border-radius: 0 2rem 0 0;
+
+      .add-text {
+        font-weight: bold;
+        color: white;
+      }
+
+      .add-icon {
+        font-size: 48px;
+        color: red;
+        margin: 2px;
+        cursor: pointer;
+      }
     }
   }
 }
