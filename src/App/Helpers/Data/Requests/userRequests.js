@@ -2,7 +2,7 @@ import axios from "axios";
 import apiKeys from "../apiKeys";
 import firebase from "firebase";
 
-const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
+const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 
 const createUser = (user) => axios.post(`${firebaseUrl}/users.json`, user);
 

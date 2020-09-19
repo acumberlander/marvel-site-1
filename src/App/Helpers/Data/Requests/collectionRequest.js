@@ -2,7 +2,7 @@ import axios from "axios";
 import apiKeys from "../apiKeys";
 import userRequests from "./userRequests";
 
-const firebaseUrl = apiKeys.apiKeys.firebaseConfig.databaseURL;
+const firebaseUrl = apiKeys.firebaseConfig.databaseURL;
 // const uid = authRequests.getCurrentUid();
 
 const getCollection = () =>
