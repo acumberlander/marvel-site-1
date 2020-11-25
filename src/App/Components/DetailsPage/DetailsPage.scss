@@ -1,129 +1,131 @@
 .detail-page-container {
-  width: 100%;
-  padding: 50px 60px;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  h2 {
-    color: red;
-  }
+	width: 100%;
+	padding: 50px 60px;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	h2 {
+		color: red;
+	}
 
-  .header-display-container {
-    // display: flex;
-    // flex-direction: row;
-    // align-items: center;
-    // color: green;
-    .checkmark {
-      color: green;
-      font-size: 30px;
-    }
-  }
+	.header-display-container {
+		.checkmark {
+			color: green;
+			font-size: 30px;
+		}
+	}
 
-  .top-area {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+	Button {
+		margin-top: 10px;
+		margin-bottom: 20px;
+	}
 
-    #first-column {
-      display: flex;
-      flex-direction: column;
-      width: 600px;
-      align-items: center;
-      h2 {
-        text-align: left;
-      }
+	.top-area {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
 
-      .misc-details {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        width: 20vw;
-      }
+		#first-column {
+			display: flex;
+			flex-direction: column;
+			width: 600px;
+			align-items: center;
+			h2 {
+				text-align: center;
+			}
 
-      .add-to-list-btn {
-        min-width: 250px;
-        margin-top: 20px;
-      }
-      .remove-from-list-btn {
-        min-width: 250px;
-        margin-top: 20px;
-      }
-    }
-    #second-column {
-      width: 1150px;
-      h2 {
-        text-align: left;
-      }
+			.misc-details {
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				width: 20vw;
+			}
 
-      .video-player {
-        height: 637px;
-        width: 60vw;
-        margin-bottom: 3vh;
-      }
+			.add-to-list-btn {
+				min-width: 250px;
+				margin-top: 20px;
+			}
+			.remove-from-list-btn {
+				min-width: 250px;
+				margin-top: 20px;
+			}
+		}
+		#second-column {
+			width: 1150px;
+			h2 {
+				text-align: center;
+			}
 
-      .details-header-div {
-        display: flex;
-      }
-      .details-column-container {
-        display: flex;
-        text-align: left;
-      }
-    }
+			.video-player {
+				height: 637px;
+				width: 60vw;
+				margin-bottom: 3vh;
+			}
 
-    .content-image {
-      height: 636px;
-      width: 420px;
-    }
-  }
+			.details-header-div {
+				display: flex;
+				justify-content: center;
+			}
+			.details-column-container {
+				display: flex;
+				text-align: center;
+			}
+		}
 
-  .misc-details {
-    font-weight: bold;
-  }
+		.content-image {
+			height: 636px;
+			width: 420px;
+		}
+	}
 
-  .in-collection {
-    color: green;
-    font-weight: bold;
-    .checkmark {
-      color: green;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 2px;
-    }
-  }
-  .not-in-collection {
-    color: red;
-    font-weight: bold;
-    .cancel {
-      color: red;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 2px;
-    }
-  }
+	.misc-details {
+		font-weight: bold;
+	}
 
-  .active {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    p {
-      margin: 0 10px 0;
-    }
-  }
+	.in-collection {
+		color: green;
+		font-weight: bold;
+		.checkmark {
+			color: green;
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 2px;
+		}
+	}
+	.not-in-collection {
+		color: red;
+		font-weight: bold;
+		.cancel {
+			color: red;
+			font-size: 20px;
+			font-weight: bold;
+			margin-top: 2px;
+		}
+	}
 
-  .inactive {
-    display: none;
-  }
+	.active {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		p {
+			margin: 0 10px 0;
+		}
+	}
 
-  .row-container {
-    text-align: left;
-    margin-top: 40px;
-  }
+	.inactive {
+		display: none;
+	}
 
-  .slider-row {
-    display: flex;
-    max-width: 95vw;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+	.row-container {
+		text-align: center;
+		margin-top: 40px;
+	}
+
+	.slider-row {
+		display: flex;
+		max-width: 95vw;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 }
