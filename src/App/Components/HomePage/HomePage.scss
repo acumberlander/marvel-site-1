@@ -1,37 +1,33 @@
 .homepage-container {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  overflow: auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	overflow: auto;
 
-  h2 {
-    color: red;
-  }
+	h2 {
+		color: red;
+	}
 
-  // top carousel
-  #top-carousel {
-    display: flex;
-    justify-content: center;
-    width: 95vw;
-    height: 50vh;
-    margin-bottom: 30px;
+	// top carousel
+	#top-carousel {
+		display: flex;
+		justify-content: center;
+		width: 95vw;
+		height: 50vh;
+		margin-bottom: 30px;
 
-    .top-carousel-image {
-      height: 50vh;
-      width: 95vw;
-    }
-  }
+		.top-carousel-image {
+			height: 50vh;
+			width: 95vw;
+		}
+	}
 
-  .header {
-    text-align: left;
-  }
-
-  .slider-row {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 95vw;
-    // height: 45vh;
-    overflow: hidden;
-  }
+	.slider-row {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		flex-wrap: wrap;
+		max-width: 95vw;
+		// height: 45vh;
+		overflow: hidden;
+	}
 }
