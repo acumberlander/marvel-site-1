@@ -46,7 +46,7 @@ export class DetailsPage extends PureComponent {
 			this.isInCollectionCheck(contentItem, user);
 		});
 
-		if (user) {
+		if (Object.entries(user).length) {
 			this.setState({ isSignedIn: true });
 		}
 	}
@@ -190,19 +190,23 @@ export class DetailsPage extends PureComponent {
 						} in-collection`}
 					>
 						<div>
-							<div>
-								<p>In Your Collection</p>
-								<span class="checkmark material-icons">done</span>
-							</div>
+							{isSignedIn ? (
+								<>
+									<div>
+										<p>In Your Collection</p>
+										<span class="checkmark material-icons">done</span>
+									</div>
 
-							<Button
-								color="danger"
-								onClick={(e) => {
-									this.removeFromCollection(contentItem);
-								}}
-							>
-								Remove from Collection
-							</Button>
+									<Button
+										color="danger"
+										onClick={(e) => {
+											this.removeFromCollection(contentItem);
+										}}
+									>
+										Remove from Collection
+									</Button>
+								</>
+							) : null}
 						</div>
 					</div>
 
@@ -212,19 +216,23 @@ export class DetailsPage extends PureComponent {
 						} not-in-collection`}
 					>
 						<div>
-							<div>
-								<p>Not In Collection</p>
-								<span class="cancel material-icons">close</span>
-							</div>
+							{isSignedIn ? (
+								<>
+									<div>
+										<p>Not In Collection</p>
+										<span class="cancel material-icons">close</span>
+									</div>
 
-							<Button
-								color="success"
-								onClick={(e) => {
-									this.addToCollection(contentItem);
-								}}
-							>
-								Add to Collection
-							</Button>
+									<Button
+										color="success"
+										onClick={(e) => {
+											this.addToCollection(contentItem);
+										}}
+									>
+										Add to Collection
+									</Button>
+								</>
+							) : null}
 						</div>
 					</div>
 				</div>
